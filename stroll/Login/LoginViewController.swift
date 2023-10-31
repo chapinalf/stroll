@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     //MARK: Do on load
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        title = "Login"
     }
     
     //TODO: Implement view controller functionality

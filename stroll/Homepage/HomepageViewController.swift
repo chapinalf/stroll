@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  HomepageViewController.swift
 //  stroll
 //
-//  Created by Chapin Alf on 10/30/23.
+//  Created by Chapin Alf on 10/31/23.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomepageViewController: UIViewController {
 
     let homepageView = HomepageView()
     
@@ -19,9 +19,10 @@ class ViewController: UIViewController {
     //MARK: Do on load
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        title = "Homepage"
     }
     
     //TODO: Implement view controller functionality
 
 }
-

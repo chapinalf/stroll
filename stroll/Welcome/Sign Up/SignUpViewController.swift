@@ -19,6 +19,8 @@ class SignUpViewController: UIViewController {
     //MARK: Do on load
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        title = "Sign Up"
     }
     
     //TODO: Implement view controller functionality

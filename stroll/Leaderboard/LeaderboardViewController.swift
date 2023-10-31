@@ -19,6 +19,8 @@ class LeaderboardViewController: UIViewController {
     //MARK: Do on load
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        title = "Leaderboard"
     }
     
     //TODO: Implement view controller functionality
