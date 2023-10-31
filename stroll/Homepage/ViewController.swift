@@ -8,9 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let homepageView = HomepageView()
+    
+    //MARK: Load the view
+    override func loadView() {
+        view = homepageView
+    }
 
+    //MARK: Do on load
     override func viewDidLoad() {
-        
         super.viewDidLoad()
     }
 
