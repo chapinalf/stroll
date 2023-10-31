@@ -9,5 +9,6 @@ import UIKit
 
 class HomepageView: UIView {
 
+    //TODO: Create homepage view
 
 }

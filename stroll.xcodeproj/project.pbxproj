@@ -14,6 +14,18 @@
 		A2A8435B2AF0A2360028DB72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2A8435A2AF0A2360028DB72 /* Assets.xcassets */; };
 		A2A8435E2AF0A2360028DB72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A8435C2AF0A2360028DB72 /* LaunchScreen.storyboard */; };
 		A2A843662AF0A2800028DB72 /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843652AF0A2800028DB72 /* HomepageView.swift */; };
+		A2A8436A2AF0A6B50028DB72 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843692AF0A6B50028DB72 /* WelcomeView.swift */; };
+		A2A8436C2AF0A6C20028DB72 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8436B2AF0A6C20028DB72 /* WelcomeViewController.swift */; };
+		A2A843712AF0A7260028DB72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843702AF0A7260028DB72 /* LoginViewController.swift */; };
+		A2A843742AF0A7450028DB72 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843732AF0A7450028DB72 /* LoginView.swift */; };
+		A2A843762AF0A7500028DB72 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843752AF0A7500028DB72 /* SignUpView.swift */; };
+		A2A843782AF0A75A0028DB72 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843772AF0A75A0028DB72 /* SignUpViewController.swift */; };
+		A2A8437A2AF0A7750028DB72 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843792AF0A7750028DB72 /* JourneyViewController.swift */; };
+		A2A8437C2AF0A7800028DB72 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8437B2AF0A7800028DB72 /* LeaderboardViewController.swift */; };
+		A2A8437E2AF0A7B60028DB72 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8437D2AF0A7B50028DB72 /* ProfileViewController.swift */; };
+		A2A843802AF0A7C40028DB72 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */; };
+		A2A843822AF0A7D00028DB72 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843812AF0A7D00028DB72 /* LeaderboardView.swift */; };
+		A2A843842AF0A7D90028DB72 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843832AF0A7D90028DB72 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +38,18 @@
 		A2A8435D2AF0A2360028DB72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2A8435F2AF0A2360028DB72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2A843652AF0A2800028DB72 /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
+		A2A843692AF0A6B50028DB72 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		A2A8436B2AF0A6C20028DB72 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A2A843702AF0A7260028DB72 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A2A843732AF0A7450028DB72 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A2A843752AF0A7500028DB72 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		A2A843772AF0A75A0028DB72 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A2A843792AF0A7750028DB72 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
+		A2A8437B2AF0A7800028DB72 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		A2A8437D2AF0A7B50028DB72 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
+		A2A843812AF0A7D00028DB72 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		A2A843832AF0A7D90028DB72 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +84,13 @@
 			children = (
 				A2A843512AF0A2350028DB72 /* AppDelegate.swift */,
 				A2A843532AF0A2350028DB72 /* SceneDelegate.swift */,
+				A2A843682AF0A6900028DB72 /* Welcome */,
+				A2A8436D2AF0A6DE0028DB72 /* Login */,
+				A2A8436F2AF0A6F00028DB72 /* Sign Up */,
 				A2A843672AF0A2840028DB72 /* Homepage */,
+				A2A843872AF0A7FD0028DB72 /* Journey */,
+				A2A843862AF0A7E70028DB72 /* Leaderboard */,
+				A2A843852AF0A7DF0028DB72 /* Profile */,
 				A2A843572AF0A2350028DB72 /* Main.storyboard */,
 				A2A8435A2AF0A2360028DB72 /* Assets.xcassets */,
 				A2A8435C2AF0A2360028DB72 /* LaunchScreen.storyboard */,
@@ -76,6 +106,61 @@
 				A2A843552AF0A2350028DB72 /* ViewController.swift */,
 			);
 			path = Homepage;
+			sourceTree = "<group>";
+		};
+		A2A843682AF0A6900028DB72 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				A2A843692AF0A6B50028DB72 /* WelcomeView.swift */,
+				A2A8436B2AF0A6C20028DB72 /* WelcomeViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		A2A8436D2AF0A6DE0028DB72 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A2A843732AF0A7450028DB72 /* LoginView.swift */,
+				A2A843702AF0A7260028DB72 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A2A8436F2AF0A6F00028DB72 /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				A2A843752AF0A7500028DB72 /* SignUpView.swift */,
+				A2A843772AF0A75A0028DB72 /* SignUpViewController.swift */,
+			);
+			name = "Sign Up";
+			path = "Welcome/Sign Up";
+			sourceTree = "<group>";
+		};
+		A2A843852AF0A7DF0028DB72 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A2A843832AF0A7D90028DB72 /* ProfileView.swift */,
+				A2A8437D2AF0A7B50028DB72 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A2A843862AF0A7E70028DB72 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				A2A843812AF0A7D00028DB72 /* LeaderboardView.swift */,
+				A2A8437B2AF0A7800028DB72 /* LeaderboardViewController.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		A2A843872AF0A7FD0028DB72 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */,
+				A2A843792AF0A7750028DB72 /* JourneyViewController.swift */,
+			);
+			path = Journey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +234,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2A843712AF0A7260028DB72 /* LoginViewController.swift in Sources */,
+				A2A8436A2AF0A6B50028DB72 /* WelcomeView.swift in Sources */,
 				A2A843562AF0A2350028DB72 /* ViewController.swift in Sources */,
 				A2A843522AF0A2350028DB72 /* AppDelegate.swift in Sources */,
+				A2A843782AF0A75A0028DB72 /* SignUpViewController.swift in Sources */,
+				A2A843802AF0A7C40028DB72 /* JourneyView.swift in Sources */,
+				A2A8436C2AF0A6C20028DB72 /* WelcomeViewController.swift in Sources */,
 				A2A843542AF0A2350028DB72 /* SceneDelegate.swift in Sources */,
+				A2A843842AF0A7D90028DB72 /* ProfileView.swift in Sources */,
+				A2A843742AF0A7450028DB72 /* LoginView.swift in Sources */,
+				A2A843762AF0A7500028DB72 /* SignUpView.swift in Sources */,
+				A2A843822AF0A7D00028DB72 /* LeaderboardView.swift in Sources */,
+				A2A8437A2AF0A7750028DB72 /* JourneyViewController.swift in Sources */,
+				A2A8437E2AF0A7B60028DB72 /* ProfileViewController.swift in Sources */,
+				A2A8437C2AF0A7800028DB72 /* LeaderboardViewController.swift in Sources */,
 				A2A843662AF0A2800028DB72 /* HomepageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

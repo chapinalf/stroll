@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LeaderboardViewController.swift
 //  stroll
 //
 //  Created by Chapin Alf on 10/30/23.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LeaderboardViewController: UIViewController {
 
-    let homepageView = HomepageView()
+    let leaderboardView = LeaderboardView()
     
     //MARK: Load the view
     override func loadView() {
-        view = homepageView
+        view = leaderboardView
     }
 
     //MARK: Do on load
@@ -24,4 +24,3 @@ class ViewController: UIViewController {
     //TODO: Implement view controller functionality
 
 }
-
