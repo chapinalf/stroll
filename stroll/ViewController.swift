@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UITabBarController, UITabBarControllerDelegate {
 
+    let defaults = UserDefaults.standard
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -58,7 +60,22 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lookForAPIKey()
     }
+    
+    func lookForAPIKey(){
+        let apiKeySaved = defaults.object(forKey: "apiKey") as! String?
+                
+        if let apiKey = apiKeySaved{
+            //MARK: tasks if there is a key saved
+            print("The Saved API Key: \(apiKey)")
+        }else{
+            //MARK: tasks if there is no key saved
+            print("No API Key saved at the moment!")
+//            let welcomeViewController = WelcomeViewController()
+//            navigationController?.pushViewController(welcomeViewController, animated: false)
+        }
+    }
+
 }
 

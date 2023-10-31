@@ -21,6 +21,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Welcome"
+        navigationItem.setHidesBackButton(true, animated: true)
     }
     
     //TODO: Implement view controller functionality
