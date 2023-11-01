@@ -11,18 +11,18 @@ class JourneyViewController: UIViewController {
 
     let journeyView = JourneyView()
     
-    //MARK: Load the view
+    //MARK: load the view...
     override func loadView() {
         view = journeyView
     }
 
-    //MARK: Do on load
+    //MARK: do on load...
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Journey"
     }
     
-    //TODO: Implement view controller functionality
+    //TODO: implement view controller functionality...
 
 }

@@ -10,19 +10,22 @@ import UIKit
 class LoginViewController: UIViewController {
 
     let loginView = LoginView()
+    let defaults = UserDefaults.standard
     
-    //MARK: Load the view
+    //MARK: load the view...
     override func loadView() {
         view = loginView
     }
 
-    //MARK: Do on load
+    //MARK: do on load...
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Login"
+        loginView.buttonLogin.addTarget(self, action: #selector(onButtonLoginTapped), for: .touchUpInside)
     }
     
-    //TODO: Implement view controller functionality
+    //MARK: login button tapped...
+    @objc func onButtonLoginTapped(){
+        self.defaults.set("1", forKey: "apiKey")
+    }
 
 }

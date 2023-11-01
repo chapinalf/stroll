@@ -11,18 +11,18 @@ class ProfileViewController: UIViewController {
 
     let profileView = ProfileView()
     
-    //MARK: Load the view
+    //MARK: load the view...
     override func loadView() {
         view = profileView
     }
 
-    //MARK: Do on load
+    //MARK: do on load...
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Profile"
     }
     
-    //TODO: Implement view controller functionality
+    //TODO: implement view controller functionality...
 
 }

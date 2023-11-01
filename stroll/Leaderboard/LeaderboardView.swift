@@ -9,6 +9,6 @@ import UIKit
 
 class LeaderboardView: UIView {
 
-    //TODO: Create leaderboard view
+    //TODO: create leaderboard view...
 
 }

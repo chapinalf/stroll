@@ -11,19 +11,29 @@ class WelcomeViewController: UIViewController {
 
     let welcomeView = WelcomeView()
     
-    //MARK: Load the view
+    //MARK: load the view...
     override func loadView() {
         view = welcomeView
     }
 
-    //MARK: Do on load
+    //MARK: do on load...
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Welcome"
         navigationItem.setHidesBackButton(true, animated: true)
+        welcomeView.buttonLogin.addTarget(self, action: #selector(onButtonLoginTapped), for: .touchUpInside)
+        welcomeView.buttonSignUp.addTarget(self, action: #selector(onButtonSignUpTapped), for: .touchUpInside)
     }
     
-    //TODO: Implement view controller functionality
+    //MARK: login button tapped...
+    @objc func onButtonLoginTapped(){
+        let loginViewController = LoginViewController()
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    //MARK: sign up button tapped...
+    @objc func onButtonSignUpTapped(){
+        let signupViewController = SignUpViewController()
+        navigationController?.pushViewController(signupViewController, animated: true)
+    }
 
 }

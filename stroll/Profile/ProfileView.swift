@@ -9,6 +9,6 @@ import UIKit
 
 class ProfileView: UIView {
 
-    //TODO: Create profile view
+    //TODO: create profile view...
 
 }

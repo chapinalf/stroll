@@ -11,18 +11,21 @@ class SignUpViewController: UIViewController {
 
     let signUpView = SignUpView()
     
-    //MARK: Load the view
+    //MARK: load the view...
     override func loadView() {
         view = signUpView
     }
 
-    //MARK: Do on load
+    //MARK: do on load...
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Sign Up"
+        signUpView.buttonSignUp.addTarget(self, action: #selector(onButtonSignUpTapped), for: .touchUpInside)
     }
     
-    //TODO: Implement view controller functionality
+    //MARK: sign up button tapped...
+    @objc func onButtonSignUpTapped(){
+//        let signupViewController = SignUpViewController()
+//        navigationController?.pushViewController(signupViewController, animated: true)
+    }
 
 }

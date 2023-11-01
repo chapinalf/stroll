@@ -11,18 +11,18 @@ class HomepageViewController: UIViewController {
 
     let homepageView = HomepageView()
     
-    //MARK: Load the view
+    //MARK: load the view...
     override func loadView() {
         view = homepageView
     }
 
-    //MARK: Do on load
+    //MARK: do on load...
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Homepage"
     }
     
-    //TODO: Implement view controller functionality
+    //TODO: implement view controller functionality...
 
 }

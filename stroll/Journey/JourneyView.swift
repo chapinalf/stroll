@@ -9,6 +9,6 @@ import UIKit
 
 class JourneyView: UIView {
 
-    //TODO: Create journey view
+    //TODO: create journey view...
 
 }
