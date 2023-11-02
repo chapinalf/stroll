@@ -13,11 +13,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //MARK: setting up welcome...
-        //TODO: FIX SO THIS ONLY SHOWS UP IF LOGGED IN!!!
-        let welcome = UINavigationController(rootViewController: WelcomeViewController())
-        
+    
         //MARK: setting up homepage bar...
         let tabHomepage = UINavigationController(rootViewController: HomepageViewController())
         let tabHomepageBarItem = UITabBarItem(
@@ -58,7 +54,27 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         tabProfile.tabBarItem = tabProfileBarItem
         tabProfile.title = "Profile"
         
-        self.viewControllers = [welcome, tabHomepage, tabJourney, tabLeaderboard, tabProfile]
+        self.viewControllers = [tabHomepage, tabJourney, tabLeaderboard, tabProfile]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let apiKeySaved = defaults.object(forKey: "apiKey") as! String?
+                
+        if let apiKey = apiKeySaved{
+            //MARK: tasks if there is a key saved
+            print("The Saved API Key: \(apiKey)")
+        }else{
+            //MARK: tasks if there is no key saved
+            print("No API Key saved at the moment!")
+            
+            let welcome = UINavigationController(rootViewController: WelcomeViewController())
+            
+            welcome.modalPresentationStyle = .fullScreen
+            
+            present(welcome, animated: false, completion: nil)
+        }
     }
     
     //MARK: do on load...

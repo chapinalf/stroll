@@ -31,6 +31,8 @@ class LoginViewController: UIViewController {
     //MARK: login button tapped...
     @objc func onButtonLoginTapped(){
         self.defaults.set("1", forKey: "apiKey")
+        print("API Key saved")
+        dismiss(animated: true)
     }
     
     //MARK: hide Keyboard...

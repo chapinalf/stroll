@@ -10,6 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     let signUpView = SignUpView()
+    let defaults = UserDefaults.standard
     
     //MARK: load the view...
     override func loadView() {
@@ -29,8 +30,9 @@ class SignUpViewController: UIViewController {
     
     //MARK: sign up button tapped...
     @objc func onButtonSignUpTapped(){
-//        let signupViewController = SignUpViewController()
-//        navigationController?.pushViewController(signupViewController, animated: true)
+        self.defaults.set("1", forKey: "apiKey")
+        print("API Key saved")
+        dismiss(animated: true)
     }
     
     //MARK: hide Keyboard...
