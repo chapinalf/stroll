@@ -22,6 +22,8 @@ class WelcomeViewController: UIViewController {
         navigationItem.setHidesBackButton(true, animated: true)
         welcomeView.buttonLogin.addTarget(self, action: #selector(onButtonLoginTapped), for: .touchUpInside)
         welcomeView.buttonSignUp.addTarget(self, action: #selector(onButtonSignUpTapped), for: .touchUpInside)
+        
+        navigationController?.navigationBar.tintColor = .black
     }
     
     //MARK: login button tapped...

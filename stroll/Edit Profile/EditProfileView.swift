@@ -1,47 +1,47 @@
 //
-//  SignUpView.swift
+//  EditProfileView.swift
 //  stroll
 //
-//  Created by Chapin Alf on 10/30/23.
+//  Created by Chapin Alf on 11/2/23.
 //
 
 import UIKit
 
-class SignUpView: UIView {
-
-    var labelSignUp: UILabel!
+class EditProfileView: UIView {
+    
+    var labelEdit: UILabel!
     var profilePic: UIImageView!
     var textFieldName: UITextField!
     var textFieldEmail: UITextField!
     var textFieldPhoneNumber: UITextField!
     var textFieldPassword: UITextField!
-    var buttonSignUp: UIButton!
+    var buttonSave: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         //MARK: set the background color...
-        self.backgroundColor = UIColor(red: 109/255, green: 205/255, blue: 255/255, alpha: 1)
+        self.backgroundColor = .white
         
         //MARK: initializing the UI elements and constraints...
-        setupLabelSignUp()
+        setupLabelEdit()
         setupProfilePic()
         setupTextFieldName()
         setupTextFieldEmail()
         setupTextFieldPhoneNumber()
         setupTextFieldPassword()
-        setupButtonSignUp()
+        setupButtonSave()
         initConstraints()
     }
     
     //MARK: initializing the UI elements...
-    func setupLabelSignUp(){
-        labelSignUp = UILabel()
-        labelSignUp.text = "Enter your information to sign up:"
-        labelSignUp.textColor = UIColor.black
-        labelSignUp.font = UIFont.boldSystemFont(ofSize: 22.0)
-        labelSignUp.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(labelSignUp)
+    func setupLabelEdit(){
+        labelEdit = UILabel()
+        labelEdit.text = "Edit your profile information:"
+        labelEdit.textColor = UIColor.black
+        labelEdit.font = UIFont.boldSystemFont(ofSize: 22.0)
+        labelEdit.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(labelEdit)
     }
     
     func setupProfilePic(){
@@ -86,15 +86,15 @@ class SignUpView: UIView {
         self.addSubview(textFieldPassword)
     }
     
-    func setupButtonSignUp() {
-        buttonSignUp = UIButton(type: .system)
-        buttonSignUp.setTitle("Sign Up", for: .normal)
-        buttonSignUp.backgroundColor = .white
-        buttonSignUp.setTitleColor(.black, for: .normal)
-        buttonSignUp.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        buttonSignUp.layer.cornerRadius = 10
-        buttonSignUp.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(buttonSignUp)
+    func setupButtonSave() {
+        buttonSave = UIButton(type: .system)
+        buttonSave.setTitle("Save", for: .normal)
+        buttonSave.backgroundColor = UIColor(red: 109/255, green: 205/255, blue: 255/255, alpha: 1)
+        buttonSave.setTitleColor(.black, for: .normal)
+        buttonSave.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        buttonSave.layer.cornerRadius = 10
+        buttonSave.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(buttonSave)
     }
     
     required init?(coder: NSCoder) {
@@ -104,39 +104,40 @@ class SignUpView: UIView {
     //MARK: initializing constraints...
     func initConstraints(){
         NSLayoutConstraint.activate([
-            labelSignUp.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            labelSignUp.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            labelEdit.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            labelEdit.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             
             profilePic.widthAnchor.constraint(equalToConstant: 100),
             profilePic.heightAnchor.constraint(equalToConstant: 100),
-            profilePic.topAnchor.constraint(equalTo: labelSignUp.bottomAnchor, constant: 8),
+            profilePic.topAnchor.constraint(equalTo: labelEdit.bottomAnchor, constant: 8),
             profilePic.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             
             textFieldName.topAnchor.constraint(equalTo: profilePic.bottomAnchor, constant: 10),
             textFieldName.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldName.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
-            textFieldEmail.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            textFieldName.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            textFieldName.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
             textFieldEmail.topAnchor.constraint(equalTo: textFieldName.bottomAnchor, constant: 5),
             textFieldEmail.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldEmail.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
-            textFieldEmail.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            textFieldEmail.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            textFieldEmail.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
             textFieldPhoneNumber.topAnchor.constraint(equalTo: textFieldEmail.bottomAnchor, constant: 5),
             textFieldPhoneNumber.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldPhoneNumber.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
-            textFieldPhoneNumber.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            textFieldPhoneNumber.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            textFieldPhoneNumber.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
             textFieldPassword.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 5),
             textFieldPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldPassword.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
-            textFieldPassword.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            textFieldPassword.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            textFieldPassword.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
-            buttonSignUp.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 10),
-            buttonSignUp.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            buttonSignUp.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
-            buttonSignUp.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            buttonSave.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 10),
+            buttonSave.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            buttonSave.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            buttonSave.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
         ])
     }
     
 }
+

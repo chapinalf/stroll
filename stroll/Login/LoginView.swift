@@ -9,7 +9,6 @@ import UIKit
 
 class LoginView: UIView {
     
-    var imageLogo: UIImageView!
     var labelLogin: UILabel!
     var textFieldEmail: UITextField!
     var textFieldPassword: UITextField!
@@ -22,7 +21,6 @@ class LoginView: UIView {
         self.backgroundColor = UIColor(red: 109/255, green: 205/255, blue: 255/255, alpha: 1)
         
         //MARK: initializing the UI elements and constraints...
-        setupImageLogo()
         setupLabelLogin()
         setupTextFieldEmail()
         setupTextFieldPassword()
@@ -31,15 +29,6 @@ class LoginView: UIView {
     }
     
     //MARK: initializing the UI elements...
-    func setupImageLogo(){
-        imageLogo = UIImageView()
-        imageLogo.image = UIImage(named: "logo")
-        imageLogo.contentMode = .scaleToFill
-        imageLogo.clipsToBounds = true
-        imageLogo.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageLogo)
-    }
-    
     func setupLabelLogin(){
         labelLogin = UILabel()
         labelLogin.text = "Enter your login information:"
@@ -83,14 +72,7 @@ class LoginView: UIView {
     //MARK: initializing constraints...
     func initConstraints(){
         NSLayoutConstraint.activate([
-            
-            //4860 × 1606 / 15
-            imageLogo.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            imageLogo.widthAnchor.constraint(equalToConstant: 324),
-            imageLogo.heightAnchor.constraint(equalToConstant: 107.07),
-            imageLogo.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            
-            labelLogin.topAnchor.constraint(equalTo: imageLogo.bottomAnchor),
+            labelLogin.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             labelLogin.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             
             textFieldEmail.topAnchor.constraint(equalTo: labelLogin.bottomAnchor, constant: 10),

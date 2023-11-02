@@ -27,6 +27,8 @@
 		A2A843802AF0A7C40028DB72 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */; };
 		A2A843822AF0A7D00028DB72 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843812AF0A7D00028DB72 /* LeaderboardView.swift */; };
 		A2A843842AF0A7D90028DB72 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843832AF0A7D90028DB72 /* ProfileView.swift */; };
+		A2D614552AF43E73004900B8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D614542AF43E73004900B8 /* EditProfileViewController.swift */; };
+		A2D614572AF43E85004900B8 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D614562AF43E85004900B8 /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
 		A2A843812AF0A7D00028DB72 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		A2A843832AF0A7D90028DB72 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A2D614542AF43E73004900B8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		A2D614562AF43E85004900B8 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 				A2A843872AF0A7FD0028DB72 /* Journey */,
 				A2A843862AF0A7E70028DB72 /* Leaderboard */,
 				A2A843852AF0A7DF0028DB72 /* Profile */,
+				A2D614532AF43E54004900B8 /* Edit Profile */,
 				A2A843572AF0A2350028DB72 /* Main.storyboard */,
 				A2A8435A2AF0A2360028DB72 /* Assets.xcassets */,
 				A2A8435C2AF0A2360028DB72 /* LaunchScreen.storyboard */,
@@ -164,6 +169,15 @@
 				A2A843792AF0A7750028DB72 /* JourneyViewController.swift */,
 			);
 			path = Journey;
+			sourceTree = "<group>";
+		};
+		A2D614532AF43E54004900B8 /* Edit Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A2D614562AF43E85004900B8 /* EditProfileView.swift */,
+				A2D614542AF43E73004900B8 /* EditProfileViewController.swift */,
+			);
+			path = "Edit Profile";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,10 +259,12 @@
 				A2A843782AF0A75A0028DB72 /* SignUpViewController.swift in Sources */,
 				A2A843802AF0A7C40028DB72 /* JourneyView.swift in Sources */,
 				A2A8436C2AF0A6C20028DB72 /* WelcomeViewController.swift in Sources */,
+				A2D614552AF43E73004900B8 /* EditProfileViewController.swift in Sources */,
 				A2A843542AF0A2350028DB72 /* SceneDelegate.swift in Sources */,
 				A2A843842AF0A7D90028DB72 /* ProfileView.swift in Sources */,
 				A2A843742AF0A7450028DB72 /* LoginView.swift in Sources */,
 				A2A843762AF0A7500028DB72 /* SignUpView.swift in Sources */,
+				A2D614572AF43E85004900B8 /* EditProfileView.swift in Sources */,
 				A2A843822AF0A7D00028DB72 /* LeaderboardView.swift in Sources */,
 				A2A8437A2AF0A7750028DB72 /* JourneyViewController.swift in Sources */,
 				A2A8437E2AF0A7B60028DB72 /* ProfileViewController.swift in Sources */,
