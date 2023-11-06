@@ -67,7 +67,7 @@ class ProfileView: UIView {
     
     func setupLabelPhoneNumber(){
         labelPhoneNumber = UILabel()
-        labelPhoneNumber.text = "5618007865"
+        labelPhoneNumber.text = "5618007866"
         labelPhoneNumber.textColor = UIColor.black
         labelPhoneNumber.font = UIFont.systemFont(ofSize: 22.0)
         labelPhoneNumber.translatesAutoresizingMaskIntoConstraints = false
