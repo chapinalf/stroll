@@ -10,6 +10,7 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     let profileView = ProfileView()
+    let defaults = UserDefaults.standard
     
     //MARK: load the view...
     override func loadView() {
@@ -19,7 +20,6 @@ class ProfileViewController: UIViewController {
     //MARK: do on load...
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         title = "Profile"
         
         // MARK: Setting the edit profile button to the navigation controller...
@@ -41,8 +41,11 @@ class ProfileViewController: UIViewController {
 
         //MARK: add sign out action...
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { (action) in
-            print("Sign Out button pressed")
-            // Implement your Sign Out logic here
+            self.defaults.removeObject(forKey: "apiKey")
+            print("API Key removed")
+            let welcome = UINavigationController(rootViewController: WelcomeViewController())
+            welcome.modalPresentationStyle = .fullScreen
+            self.present(welcome, animated: true, completion: nil)
         }
         hamburgerAlert.addAction(signOutAction)
 
