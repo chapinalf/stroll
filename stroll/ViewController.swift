@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class ViewController: UITabBarController, UITabBarControllerDelegate {
-
-    let defaults = UserDefaults.standard
+    
+    var handleAuth: AuthStateDidChangeListenerHandle?
+    var currentUser:FirebaseAuth.User?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,20 +64,22 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let apiKeySaved = defaults.object(forKey: "apiKey") as! String?
+        //MARK: handling if the authentication state is changed (sign in, sign out, register)...
+        handleAuth = Auth.auth().addStateDidChangeListener{ auth, user in
+            if user == nil{
+                //MARK: not signed in...
+                self.currentUser = nil
+                let welcomeViewController = UINavigationController(rootViewController: WelcomeViewController())
+                welcomeViewController.modalPresentationStyle = .fullScreen
+                self.present(welcomeViewController, animated: false, completion: nil)
                 
-        if let apiKey = apiKeySaved{
-            //MARK: tasks if there is a key saved
-            print("The Saved API Key: \(apiKey)")
-        }else{
-            //MARK: tasks if there is no key saved
-            print("No API Key saved at the moment!")
-            
-            let welcome = UINavigationController(rootViewController: WelcomeViewController())
-            
-            welcome.modalPresentationStyle = .fullScreen
-            
-            present(welcome, animated: false, completion: nil)
+                //TODO: CLEAR DATA
+            }else{
+                //MARK: signed in...
+                self.currentUser = user
+                
+                //TODO: LOAD DATA
+            }
         }
     }
     

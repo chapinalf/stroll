@@ -49,6 +49,7 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaderBoard", for: indexPath) as! LeaderTableViewCell
+        cell.selectionStyle = .none
         cell.labelName.text = leaderBoard[indexPath.row].name
         if let uwStrolls = leaderBoard[indexPath.row].strolls{
             cell.labelStrolls.text = "Strolls: \(uwStrolls)"

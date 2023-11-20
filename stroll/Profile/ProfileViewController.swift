@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
     let profileView = ProfileView()
-    let defaults = UserDefaults.standard
     
     //MARK: load the view...
     override func loadView() {
@@ -41,11 +41,13 @@ class ProfileViewController: UIViewController {
 
         //MARK: add sign out action...
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { (action) in
-            self.defaults.removeObject(forKey: "apiKey")
-            print("API Key removed")
-            let welcome = UINavigationController(rootViewController: WelcomeViewController())
-            welcome.modalPresentationStyle = .fullScreen
-            self.present(welcome, animated: true, completion: nil)
+            
+            do{
+                try Auth.auth().signOut()
+            }catch{
+                self.showErrorAlert("Sign out Failed!", "You could not be signed out. Please try again!")
+            }
+            
         }
         hamburgerAlert.addAction(signOutAction)
 
@@ -54,6 +56,13 @@ class ProfileViewController: UIViewController {
         hamburgerAlert.addAction(cancelAction)
 
         self.present(hamburgerAlert, animated: true)
+    }
+    
+    //MARK: show error alert...
+    func showErrorAlert(_ errorTitle: String, _ errorMessage: String){
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
 
 }

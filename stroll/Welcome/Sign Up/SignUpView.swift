@@ -10,11 +10,13 @@ import UIKit
 class SignUpView: UIView {
 
     var labelSignUp: UILabel!
-    var profilePic: UIImageView!
+    var profilePic: UIButton!
     var textFieldName: UITextField!
     var textFieldEmail: UITextField!
     var textFieldPhoneNumber: UITextField!
+    var textFieldCity: UITextField! //TODO: CHANGE TO DROPDOWN
     var textFieldPassword: UITextField!
+    var textFieldPasswordConfirm: UITextField!
     var buttonSignUp: UIButton!
     
     override init(frame: CGRect) {
@@ -29,7 +31,9 @@ class SignUpView: UIView {
         setupTextFieldName()
         setupTextFieldEmail()
         setupTextFieldPhoneNumber()
+        setupTextFieldCity()
         setupTextFieldPassword()
+        setupTextFieldPasswordConfirm()
         setupButtonSignUp()
         initConstraints()
     }
@@ -45,11 +49,13 @@ class SignUpView: UIView {
     }
     
     func setupProfilePic(){
-        profilePic = UIImageView()
-        profilePic.image = UIImage(systemName: "person.fill.badge.plus")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
-        profilePic.contentMode = .scaleToFill
-        profilePic.clipsToBounds = true
-        profilePic.layer.masksToBounds = true
+        profilePic = UIButton(type: .system)
+        profilePic.setTitle("", for: .normal)
+        profilePic.setImage(UIImage(systemName: "person.fill.badge.plus")?.withRenderingMode(.alwaysOriginal).withTintColor(.black), for: .normal)
+        profilePic.contentHorizontalAlignment = .fill
+        profilePic.contentVerticalAlignment = .fill
+        profilePic.imageView?.contentMode = .scaleAspectFit
+        profilePic.showsMenuAsPrimaryAction = true
         profilePic.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(profilePic)
     }
@@ -66,6 +72,7 @@ class SignUpView: UIView {
         textFieldEmail = UITextField()
         textFieldEmail.placeholder = "Email Address"
         textFieldEmail.borderStyle = .roundedRect
+        textFieldEmail.keyboardType = .emailAddress
         textFieldEmail.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldEmail)
     }
@@ -74,16 +81,37 @@ class SignUpView: UIView {
         textFieldPhoneNumber = UITextField()
         textFieldPhoneNumber.placeholder = "Phone Number"
         textFieldPhoneNumber.borderStyle = .roundedRect
+        textFieldPhoneNumber.keyboardType = .numberPad
         textFieldPhoneNumber.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPhoneNumber)
+    }
+    
+    func setupTextFieldCity(){
+        textFieldCity = UITextField()
+        textFieldCity.placeholder = "City"
+        textFieldCity.borderStyle = .roundedRect
+        textFieldCity.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(textFieldCity)
     }
     
     func setupTextFieldPassword(){
         textFieldPassword = UITextField()
         textFieldPassword.placeholder = "Password"
         textFieldPassword.borderStyle = .roundedRect
+        textFieldPassword.textContentType = .password
+        textFieldPassword.isSecureTextEntry = true
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPassword)
+    }
+    
+    func setupTextFieldPasswordConfirm(){
+        textFieldPasswordConfirm = UITextField()
+        textFieldPasswordConfirm.placeholder = "Password Confirmation"
+        textFieldPasswordConfirm.borderStyle = .roundedRect
+        textFieldPasswordConfirm.textContentType = .password
+        textFieldPasswordConfirm.isSecureTextEntry = true
+        textFieldPasswordConfirm.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(textFieldPasswordConfirm)
     }
     
     func setupButtonSignUp() {
@@ -127,12 +155,22 @@ class SignUpView: UIView {
             textFieldPhoneNumber.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
             textFieldPhoneNumber.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
             
-            textFieldPassword.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 5),
+            textFieldCity.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 5),
+            textFieldCity.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            textFieldCity.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
+            textFieldCity.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            
+            textFieldPassword.topAnchor.constraint(equalTo: textFieldCity.bottomAnchor, constant: 5),
             textFieldPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             textFieldPassword.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
             textFieldPassword.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
             
-            buttonSignUp.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 10),
+            textFieldPasswordConfirm.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 5),
+            textFieldPasswordConfirm.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            textFieldPasswordConfirm.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
+            textFieldPasswordConfirm.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            
+            buttonSignUp.topAnchor.constraint(equalTo: textFieldPasswordConfirm.bottomAnchor, constant: 10),
             buttonSignUp.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             buttonSignUp.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
             buttonSignUp.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),

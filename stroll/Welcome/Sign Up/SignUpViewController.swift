@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import PhotosUI
+import FirebaseStorage
 
 class SignUpViewController: UIViewController {
 
     let signUpView = SignUpView()
-    let defaults = UserDefaults.standard
+    let database = Firestore.firestore()
+    var pickedImage:UIImage?
+    let storage = Storage.storage()
+    let childProgressView = ProgressSpinnerViewController()
+    
+    var userPhoneNumber: Int!
+    var userCity: String!
     
     //MARK: load the view...
     override func loadView() {
@@ -26,19 +37,64 @@ class SignUpViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
         tapRecognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapRecognizer)
+        
+        signUpView.profilePic.menu = getMenuImagePicker()
     }
     
     //MARK: sign up button tapped...
     @objc func onButtonSignUpTapped(){
-        self.defaults.set("1", forKey: "apiKey")
-        print("API Key saved")
-        dismiss(animated: true)
+        //MARK: creating a new user on Firebase...
+        showActivityIndicator()
+        uploadProfilePhotoToStorage()
     }
     
     //MARK: hide Keyboard...
     @objc func hideKeyboardOnTap(){
         //MARK: removing the keyboard from screen...
         view.endEditing(true)
+    }
+    
+    //MARK: show error alert...
+    func showErrorAlert(_ errorTitle: String, _ errorMessage: String){
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    //MARK: menu for buttonTakePhoto setup...
+    func getMenuImagePicker() -> UIMenu{
+        let menuItems = [
+            UIAction(title: "Camera",handler: {(_) in
+                self.pickUsingCamera()
+            }),
+            UIAction(title: "Gallery",handler: {(_) in
+                self.pickPhotoFromGallery()
+            })
+        ]
+        
+        return UIMenu(title: "Select source", children: menuItems)
+    }
+    
+    //MARK: take Photo using Camera...
+    func pickUsingCamera(){
+        let cameraController = UIImagePickerController()
+        cameraController.sourceType = .camera
+        cameraController.allowsEditing = true
+        cameraController.delegate = self
+        present(cameraController, animated: true)
+    }
+    
+    //MARK: pick Photo using Gallery...
+    func pickPhotoFromGallery(){
+        //MARK: Photo from Gallery...
+        var configuration = PHPickerConfiguration()
+        configuration.filter = PHPickerFilter.any(of: [.images])
+        configuration.selectionLimit = 1
+        
+        let photoPicker = PHPickerViewController(configuration: configuration)
+        
+        photoPicker.delegate = self
+        present(photoPicker, animated: true, completion: nil)
     }
 
 }
