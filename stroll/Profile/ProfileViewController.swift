@@ -7,14 +7,50 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class ProfileViewController: UIViewController {
-
+    
     let profileView = ProfileView()
+    let database = Firestore.firestore()
     
     //MARK: load the view...
     override func loadView() {
         view = profileView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.profileView.labelName.text = Auth.auth().currentUser?.displayName
+        self.profileView.labelEmail.text = "Email: " + (Auth.auth().currentUser?.email)!
+        
+        //MARK: observe firestore database to display the profile information...
+        database.collection("users").document((Auth.auth().currentUser?.email)!).addSnapshotListener { documentSnapshot, error in
+              
+              if let document = documentSnapshot {
+                      do{
+                          let user = try document.data(as: User.self)
+                          self.profileView.labelPhoneNumber.text = "Phone: " + String(user.phoneNumber)
+                          self.profileView.labelCity.text = "City: " + user.city
+                          self.profileView.labelStrollsStreak1.text = String(user.strollsStreak)
+                          self.profileView.labelStrollsTotal1.text = String(user.strollsTotal)
+                          self.profileView.labelMilesStreak1.text = String(user.milesStreak)
+                          self.profileView.labelMilesTotal1.text = String(user.milesTotal)
+                      }catch{
+                          print(error)
+                          self.showErrorAlert("Could not load profile!", "The profile could not be loaded. Please try again later!")
+                      }
+                  }
+          }
+        
+        //MARK: setting the profile photo...
+        if let url = Auth.auth().currentUser?.photoURL{
+            self.profileView.profilePic.loadRemoteImage(from: url)
+        } else {
+            self.profileView.profilePic.image = UIImage(systemName: "person.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
+        }
     }
 
     //MARK: do on load...

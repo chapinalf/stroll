@@ -8,13 +8,15 @@
 import UIKit
 
 class EditProfileView: UIView {
-    
+
     var labelEdit: UILabel!
-    var profilePic: UIImageView!
+    var profilePic: UIButton!
     var textFieldName: UITextField!
     var textFieldEmail: UITextField!
     var textFieldPhoneNumber: UITextField!
+    var textFieldCity: UITextField! //TODO: CHANGE TO DROPDOWN
     var textFieldPassword: UITextField!
+    var textFieldPasswordConfirm: UITextField!
     var buttonSave: UIButton!
     
     override init(frame: CGRect) {
@@ -29,7 +31,9 @@ class EditProfileView: UIView {
         setupTextFieldName()
         setupTextFieldEmail()
         setupTextFieldPhoneNumber()
+        setupTextFieldCity()
         setupTextFieldPassword()
+        setupTextFieldPasswordConfirm()
         setupButtonSave()
         initConstraints()
     }
@@ -45,11 +49,13 @@ class EditProfileView: UIView {
     }
     
     func setupProfilePic(){
-        profilePic = UIImageView()
-        profilePic.image = UIImage(systemName: "person.fill.badge.plus")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
-        profilePic.contentMode = .scaleToFill
-        profilePic.clipsToBounds = true
-        profilePic.layer.masksToBounds = true
+        profilePic = UIButton(type: .system)
+        profilePic.setTitle("", for: .normal)
+        profilePic.setImage(UIImage(systemName: "person.fill.badge.plus")?.withRenderingMode(.alwaysOriginal).withTintColor(.black), for: .normal)
+        profilePic.contentHorizontalAlignment = .fill
+        profilePic.contentVerticalAlignment = .fill
+        profilePic.imageView?.contentMode = .scaleAspectFit
+        profilePic.showsMenuAsPrimaryAction = true
         profilePic.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(profilePic)
     }
@@ -66,6 +72,7 @@ class EditProfileView: UIView {
         textFieldEmail = UITextField()
         textFieldEmail.placeholder = "Email Address"
         textFieldEmail.borderStyle = .roundedRect
+        textFieldEmail.keyboardType = .emailAddress
         textFieldEmail.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldEmail)
     }
@@ -74,22 +81,43 @@ class EditProfileView: UIView {
         textFieldPhoneNumber = UITextField()
         textFieldPhoneNumber.placeholder = "Phone Number"
         textFieldPhoneNumber.borderStyle = .roundedRect
+        textFieldPhoneNumber.keyboardType = .numberPad
         textFieldPhoneNumber.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPhoneNumber)
+    }
+    
+    func setupTextFieldCity(){
+        textFieldCity = UITextField()
+        textFieldCity.placeholder = "City"
+        textFieldCity.borderStyle = .roundedRect
+        textFieldCity.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(textFieldCity)
     }
     
     func setupTextFieldPassword(){
         textFieldPassword = UITextField()
         textFieldPassword.placeholder = "Password"
         textFieldPassword.borderStyle = .roundedRect
+        textFieldPassword.textContentType = .password
+        textFieldPassword.isSecureTextEntry = true
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPassword)
+    }
+    
+    func setupTextFieldPasswordConfirm(){
+        textFieldPasswordConfirm = UITextField()
+        textFieldPasswordConfirm.placeholder = "Password Confirmation"
+        textFieldPasswordConfirm.borderStyle = .roundedRect
+        textFieldPasswordConfirm.textContentType = .password
+        textFieldPasswordConfirm.isSecureTextEntry = true
+        textFieldPasswordConfirm.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(textFieldPasswordConfirm)
     }
     
     func setupButtonSave() {
         buttonSave = UIButton(type: .system)
         buttonSave.setTitle("Save", for: .normal)
-        buttonSave.backgroundColor = UIColor(red: 109/255, green: 205/255, blue: 255/255, alpha: 1)
+        buttonSave.backgroundColor = .white
         buttonSave.setTitleColor(.black, for: .normal)
         buttonSave.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         buttonSave.layer.cornerRadius = 10
@@ -114,28 +142,38 @@ class EditProfileView: UIView {
             
             textFieldName.topAnchor.constraint(equalTo: profilePic.bottomAnchor, constant: 10),
             textFieldName.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldName.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            textFieldName.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            textFieldName.leadingAnchor.constraint(equalTo: labelEdit.leadingAnchor),
+            textFieldEmail.trailingAnchor.constraint(equalTo: labelEdit.trailingAnchor),
             
             textFieldEmail.topAnchor.constraint(equalTo: textFieldName.bottomAnchor, constant: 5),
             textFieldEmail.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldEmail.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            textFieldEmail.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            textFieldEmail.leadingAnchor.constraint(equalTo: labelEdit.leadingAnchor),
+            textFieldEmail.trailingAnchor.constraint(equalTo: labelEdit.trailingAnchor),
             
             textFieldPhoneNumber.topAnchor.constraint(equalTo: textFieldEmail.bottomAnchor, constant: 5),
             textFieldPhoneNumber.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldPhoneNumber.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            textFieldPhoneNumber.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            textFieldPhoneNumber.leadingAnchor.constraint(equalTo: labelEdit.leadingAnchor),
+            textFieldPhoneNumber.trailingAnchor.constraint(equalTo: labelEdit.trailingAnchor),
             
-            textFieldPassword.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 5),
+            textFieldCity.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 5),
+            textFieldCity.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            textFieldCity.leadingAnchor.constraint(equalTo: labelEdit.leadingAnchor),
+            textFieldCity.trailingAnchor.constraint(equalTo: labelEdit.trailingAnchor),
+            
+            textFieldPassword.topAnchor.constraint(equalTo: textFieldCity.bottomAnchor, constant: 5),
             textFieldPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldPassword.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            textFieldPassword.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            textFieldPassword.leadingAnchor.constraint(equalTo: labelEdit.leadingAnchor),
+            textFieldPassword.trailingAnchor.constraint(equalTo: labelEdit.trailingAnchor),
             
-            buttonSave.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 10),
+            textFieldPasswordConfirm.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 5),
+            textFieldPasswordConfirm.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            textFieldPasswordConfirm.leadingAnchor.constraint(equalTo: labelEdit.leadingAnchor),
+            textFieldPasswordConfirm.trailingAnchor.constraint(equalTo: labelEdit.trailingAnchor),
+            
+            buttonSave.topAnchor.constraint(equalTo: textFieldPasswordConfirm.bottomAnchor, constant: 10),
             buttonSave.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            buttonSave.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonSave.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            buttonSave.leadingAnchor.constraint(equalTo: labelEdit.leadingAnchor),
+            buttonSave.trailingAnchor.constraint(equalTo: labelEdit.trailingAnchor),
         ])
     }
     
