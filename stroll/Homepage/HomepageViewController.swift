@@ -21,8 +21,15 @@ class HomepageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Homepage"
+        
+        homepageView.startButton.addTarget(self, action: #selector(onStartButtonTapped), for: .touchUpInside)
     }
     
-    //TODO: implement view controller functionality...
+    @objc func onStartButtonTapped() {
+        if let tabBarController = tabBarController {
+            tabBarController.selectedIndex = 1 // Index of the "Journey" tab
+        }
+    }
+    
 
 }

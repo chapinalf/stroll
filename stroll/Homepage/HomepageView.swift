@@ -7,7 +7,8 @@
 
 import UIKit
 
-class HomepageView: UIScrollView {
+class HomepageView: UIView {
+    var strollColor = UIColor(red: 109/255, green: 205/255, blue: 255/255, alpha: 1)
     
     var contentWrapper: UIScrollView!
 
@@ -16,7 +17,8 @@ class HomepageView: UIScrollView {
     
     var leaderBoardLabel: UILabel!
     var startButton: UIButton!
-    
+
+    var separatorLine: UIView!
     var additionalInformationTitle: UILabel!
     var additionalInformationText: UILabel!
     
@@ -43,6 +45,7 @@ class HomepageView: UIScrollView {
     //MARK: set up UI elements
     func setUpContentWrapper() {
         contentWrapper = UIScrollView()
+        contentWrapper.backgroundColor = strollColor
         contentWrapper.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(contentWrapper)
     }
@@ -53,14 +56,16 @@ class HomepageView: UIScrollView {
         locationLabel.textColor = UIColor.black
         locationLabel.font = UIFont.boldSystemFont(ofSize: 35.0)
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(locationLabel)
+        contentWrapper.addSubview(locationLabel)
     }
     func setUpLocationPhoto() {
         locationPhoto = UIImageView()
-        locationPhoto.image = UIImage(named: "Caffe Nero") // Replace "your_image_name" with the actual name of your image asset.
+        locationPhoto.image = UIImage(named: "Nero") // Replace "your_image_name" with the actual name of your image asset.
         locationPhoto.contentMode = .scaleAspectFit // Adjust the content mode to your needs.
         locationPhoto.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(locationPhoto)
+        locationPhoto.layer.cornerRadius = 20 // Adjust the corner radius to your preference
+        locationPhoto.clipsToBounds = true // Clip to bounds
+        contentWrapper.addSubview(locationPhoto)
     }
     func setUpLeaderBoardLabel() {
         leaderBoardLabel = UILabel()
@@ -69,20 +74,26 @@ class HomepageView: UIScrollView {
         leaderBoardLabel.textColor = UIColor.black
         leaderBoardLabel.font = UIFont.boldSystemFont(ofSize: 15.0)
         leaderBoardLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(leaderBoardLabel)
+        contentWrapper.addSubview(leaderBoardLabel)
     }
     func setUpStartButton() {
         startButton = UIButton(type: .system)
         startButton.setTitle("start your stroll", for: .normal)
-        startButton.setTitleColor(.white, for: .normal)
+        startButton.setTitleColor(strollColor, for: .normal)
         startButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         startButton.layer.cornerRadius = 15
-        startButton.backgroundColor = .black // Set the background color
+        startButton.backgroundColor = .white // Set the background color
         startButton.layer.borderWidth = 1.0 // Add a border
-        startButton.layer.borderColor = UIColor.black.cgColor // Set the border color
+        startButton.layer.borderColor = UIColor.white.cgColor // Set the border color
         startButton.contentEdgeInsets = UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
         startButton.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(startButton)
+        contentWrapper.addSubview(startButton)
+        
+        // Add drop shadow
+        startButton.layer.shadowColor = UIColor.black.cgColor
+        startButton.layer.shadowOpacity = 0.5
+        startButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        startButton.layer.shadowRadius = 8
     }
     func setUpAdditionalInformationTitle() {
         additionalInformationTitle = UILabel()
@@ -91,38 +102,31 @@ class HomepageView: UIScrollView {
         additionalInformationTitle.textColor = UIColor.black
         additionalInformationTitle.font = UIFont.boldSystemFont(ofSize: 16.0)
         additionalInformationTitle.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(additionalInformationTitle)
+        contentWrapper.addSubview(additionalInformationTitle)
     }
     func setUpAdditionalInformationText() {
         additionalInformationText = UILabel()
-//        additionalInformationText.text = """
-//        Our goal since the very beginning has been
-//        to create a place that radiates comfort,
-//        relaxation and warmth. A place to meet
-//        friends, work or just watch the world go by.
-//        A local neighborhood spot.
-//
-//        We are lucky to have some fantastic people
-//        in our company that bring this to life,
-//        giving each store its own character through
-//        a combination of personal service and
-//        unique design.
-//
-//        And, of course, great coffee.
-//        """
         additionalInformationText.text = """
         Our goal since the very beginning has been
         to create a place that radiates comfort,
         relaxation and warmth. A place to meet
         friends, work or just watch the world go by.
         A local neighborhood spot.
+
+        We are lucky to have some fantastic people
+        in our company that bring this to life,
+        giving each store its own character through
+        a combination of personal service and
+        unique design.
+
+        And, of course, great coffee.
         """
         additionalInformationText.numberOfLines = 0 // Allow multiple lines
         additionalInformationText.textAlignment = .center
         additionalInformationText.textColor = UIColor.black
         additionalInformationText.font = UIFont.systemFont(ofSize: 14.0)
         additionalInformationText.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(additionalInformationText)
+        contentWrapper.addSubview(additionalInformationText)
     }
 
     
@@ -134,31 +138,31 @@ class HomepageView: UIScrollView {
             //MARK: contentWrapper constraints...
             contentWrapper.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             contentWrapper.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
-            contentWrapper.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor),
-            contentWrapper.bottomAnchor.constraint(equalTo: additionalInformationText.bottomAnchor),
+            contentWrapper.widthAnchor.constraint(equalTo:self.safeAreaLayoutGuide.widthAnchor),
             contentWrapper.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor),
             
             
             locationLabel.topAnchor.constraint(equalTo: contentWrapper.topAnchor, constant: 20),
             locationLabel.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
-            locationPhoto.topAnchor.constraint(equalTo: locationLabel.topAnchor),
+            locationPhoto.topAnchor.constraint(equalTo: locationLabel.topAnchor, constant: 75),
             locationPhoto.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             locationPhoto.widthAnchor.constraint(equalToConstant: 325),
             locationPhoto.heightAnchor.constraint(equalToConstant: 325),
             
-            leaderBoardLabel.topAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: 1.0),
-            leaderBoardLabel.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
-            
-            startButton.topAnchor.constraint(equalTo: leaderBoardLabel.bottomAnchor, constant: 150),
+            startButton.topAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: -35),
             startButton.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
-            additionalInformationTitle.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 50),
+            leaderBoardLabel.topAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: 100),
+            leaderBoardLabel.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
+            
+            
+            additionalInformationTitle.topAnchor.constraint(equalTo: leaderBoardLabel.bottomAnchor, constant: 300),
             additionalInformationTitle.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
-            additionalInformationText.topAnchor.constraint(equalTo: additionalInformationTitle.bottomAnchor),
+            additionalInformationText.topAnchor.constraint(equalTo: additionalInformationTitle.bottomAnchor, constant: 10),
             additionalInformationText.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
-            additionalInformationText.bottomAnchor.constraint(equalTo: contentWrapper.bottomAnchor)
+            additionalInformationText.bottomAnchor.constraint(equalTo: contentWrapper.bottomAnchor, constant: -30)
         ])
     }
     
