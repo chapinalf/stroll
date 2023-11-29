@@ -35,7 +35,6 @@ class LeaderTableViewCell: UITableViewCell {
         func setupWrapperCellView(){
             wrapperCellView = UITableViewCell()
             wrapperCellView.translatesAutoresizingMaskIntoConstraints = false
-            wrapperCellView.layer.borderWidth = 0.5
             wrapperCellView.layer.cornerRadius = 5
             self.addSubview(wrapperCellView)
         }
@@ -48,34 +47,36 @@ class LeaderTableViewCell: UITableViewCell {
         func setupLabelAmount(){
             labelStrolls = UILabel()
             labelStrolls.translatesAutoresizingMaskIntoConstraints = false
+            labelStrolls.font = .systemFont(ofSize: 18)
             wrapperCellView.addSubview(labelStrolls)
         }
         func setupLabelType(){
             labelStreak = UILabel()
             labelStreak.translatesAutoresizingMaskIntoConstraints = false
+            labelStreak.font = .systemFont(ofSize: 18)
             wrapperCellView.addSubview(labelStreak)
         }
         
         func initConstraints(){
             NSLayoutConstraint.activate([
-                wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor,constant: 10),
-                wrapperCellView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+                wrapperCellView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
                 wrapperCellView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                 
                 labelName.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 4),
-                labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 4),
+                labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 5),
                 labelName.heightAnchor.constraint(equalToConstant: 20),
                 
-                labelStrolls.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 4),
-                labelStrolls.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
+                labelStrolls.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 4),
+                labelStrolls.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 225),
                 labelStrolls.heightAnchor.constraint(equalToConstant: 20),
                 
-                labelStreak.topAnchor.constraint(equalTo: labelStrolls.bottomAnchor, constant: 4),
-                labelStreak.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
+                labelStreak.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 4),
+                labelStreak.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 300),
                 labelStreak.heightAnchor.constraint(equalToConstant: 20),
                 
-                wrapperCellView.heightAnchor.constraint(equalToConstant: 76)
+                wrapperCellView.heightAnchor.constraint(equalToConstant: 30)
             ])
         }
 

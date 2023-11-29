@@ -9,6 +9,10 @@ import UIKit
 
 class LeaderboardView: UIView {
 
+    var labelLeaderName: UILabel!
+    var labelLeaderStreak: UILabel!
+    var labelLeaderStrolls: UILabel!
+    
     var tableViewLeaderboard: UITableView!
     var yourStatsContainer: UIView!
     
@@ -36,8 +40,15 @@ class LeaderboardView: UIView {
         setupLabelStreakNum()
         setupLabelStrollNum()
         
+        setupLeaderName()
+        setupLeaderStrolls()
+        setupLeaderStreak()
+        
         initConstraints()
     }
+    
+    
+    
     
     //MARK: initializing the UI elements...
     func setupTableViewLeaderboard(){
@@ -108,11 +119,50 @@ class LeaderboardView: UIView {
         yourStatsContainer.addSubview(labelStreak)
     }
     
+    func setupLeaderName(){
+        labelLeaderName = UILabel()
+        labelLeaderName.textColor = UIColor.black
+        labelLeaderName.font = UIFont.boldSystemFont(ofSize: 18)
+        labelLeaderName.translatesAutoresizingMaskIntoConstraints = false
+        labelLeaderName.text = "Name"
+        self.addSubview(labelLeaderName)
+    }
+    
+    func setupLeaderStreak(){
+        labelLeaderStreak = UILabel()
+        labelLeaderStreak.textColor = UIColor.black
+        labelLeaderStreak.font = UIFont.boldSystemFont(ofSize: 18)
+        labelLeaderStreak.translatesAutoresizingMaskIntoConstraints = false
+        labelLeaderStreak.text = "Streak"
+        self.addSubview(labelLeaderStreak)
+    }
+    
+    func setupLeaderStrolls(){
+        labelLeaderStrolls = UILabel()
+        labelLeaderStrolls.textColor = UIColor.black
+        labelLeaderStrolls.font = UIFont.boldSystemFont(ofSize: 18)
+        labelLeaderStrolls.translatesAutoresizingMaskIntoConstraints = false
+        labelLeaderStrolls.text = "Strolls"
+        self.addSubview(labelLeaderStrolls)
+    }
+    
     //MARK: initializing constraints...
     func initConstraints(){
         NSLayoutConstraint.activate([
+            
+            labelLeaderName.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
+            labelLeaderName.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 22),
+            labelLeaderName.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            
+            labelLeaderStrolls.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
+            labelLeaderStrolls.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 227),
+            labelLeaderStrolls.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            
+            labelLeaderStreak.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
+            labelLeaderStreak.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 302),
+            labelLeaderStreak.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
  
-            tableViewLeaderboard.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
+            tableViewLeaderboard.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30),
             tableViewLeaderboard.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             tableViewLeaderboard.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             tableViewLeaderboard.heightAnchor.constraint(equalToConstant: 500),
