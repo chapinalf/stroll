@@ -9,4 +9,5 @@ import Foundation
 
 class Configs{
     //TODO: table ids
+    public static let placeIdentifier = "placeIdentifier"
 }
