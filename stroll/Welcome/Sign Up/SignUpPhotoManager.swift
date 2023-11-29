@@ -50,7 +50,7 @@ extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerCon
             )
             self.pickedImage = image
         }else{
-            // Do your thing for No image loaded...
+            self.showErrorAlert("Sign Up Failed!", "The image provided could not be loaded. Please try again!")
         }
     }
 }

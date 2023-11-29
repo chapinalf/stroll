@@ -36,7 +36,6 @@ extension SignUpViewController{
                         })
                     }else {
                         self.hideActivityIndicator()
-                        print(error?.localizedDescription)
                         self.showErrorAlert("Sign Up Failed!", "The image could not be uploaded. Please try again.")
                     }
                 })
@@ -63,6 +62,9 @@ extension SignUpViewController{
                 self.hideActivityIndicator()
             } else if email.isEmpty {
                 self.showErrorAlert("Sign Up Failed!", "An email must be provided. Please try again!")
+                self.hideActivityIndicator()
+            } else if !isValidEmail(email) {
+                self.showErrorAlert("Sign Up Failed!", "The email was not provided in a valid form!")
                 self.hideActivityIndicator()
             } else if phoneNumberString.isEmpty {
                 self.showErrorAlert("Sign Up Failed!", "A phone number must be provided. Please try again!")
@@ -142,6 +144,13 @@ extension SignUpViewController{
                 print("Error adding document!")
             }
         }
+    }
+    
+    //MARK: validate email helper...
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
 }
