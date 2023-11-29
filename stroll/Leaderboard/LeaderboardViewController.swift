@@ -52,10 +52,10 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource{
         cell.selectionStyle = .none
         cell.labelName.text = leaderBoard[indexPath.row].name
         if let uwStrolls = leaderBoard[indexPath.row].strolls{
-            cell.labelStrolls.text = "Strolls: \(uwStrolls)"
+            cell.labelStrolls.text = "\(uwStrolls)"
         }
         if let uwStreak = leaderBoard[indexPath.row].streak{
-            cell.labelStreak.text = "Streak: \(uwStreak)"
+            cell.labelStreak.text = "\(uwStreak)"
         }
         return cell
     }
