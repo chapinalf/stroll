@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+//TODO: ADD PROGRESS INDICATOR
 class ProfileViewController: UIViewController {
     
     let profileView = ProfileView()
@@ -67,13 +68,6 @@ class ProfileViewController: UIViewController {
     
     @objc func onHamburgerTapped() {
         let hamburgerAlert = UIAlertController()
-        
-        let editProfileViewController = EditProfileViewController()
-        //MARK: add edit action...
-        let editAction = UIAlertAction(title: "Edit Profile", style: .default) { (action) in
-            self.navigationController?.pushViewController(editProfileViewController, animated: true)
-        }
-        hamburgerAlert.addAction(editAction)
 
         //MARK: add sign out action...
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { (action) in

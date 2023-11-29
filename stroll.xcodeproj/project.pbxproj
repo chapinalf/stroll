@@ -67,8 +67,6 @@
 		A2A843802AF0A7C40028DB72 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */; };
 		A2A843822AF0A7D00028DB72 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843812AF0A7D00028DB72 /* LeaderboardView.swift */; };
 		A2A843842AF0A7D90028DB72 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843832AF0A7D90028DB72 /* ProfileView.swift */; };
-		A2D614552AF43E73004900B8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D614542AF43E73004900B8 /* EditProfileViewController.swift */; };
-		A2D614572AF43E85004900B8 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D614562AF43E85004900B8 /* EditProfileView.swift */; };
 		A2DC05842B0C286400415661 /* ImageViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC05832B0C286400415661 /* ImageViewUtils.swift */; };
 		FD5D8EA52B06DD0B0004E0C2 /* Leader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D8EA42B06DD0B0004E0C2 /* Leader.swift */; };
 		FD5D8EA72B06DD660004E0C2 /* LeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D8EA62B06DD660004E0C2 /* LeaderTableViewCell.swift */; };
@@ -110,8 +108,6 @@
 		A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
 		A2A843812AF0A7D00028DB72 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		A2A843832AF0A7D90028DB72 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		A2D614542AF43E73004900B8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		A2D614562AF43E85004900B8 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A2DC05832B0C286400415661 /* ImageViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewUtils.swift; sourceTree = "<group>"; };
 		FD5D8EA42B06DD0B0004E0C2 /* Leader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leader.swift; sourceTree = "<group>"; };
 		FD5D8EA62B06DD660004E0C2 /* LeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,7 +202,6 @@
 				A2A843872AF0A7FD0028DB72 /* Journey */,
 				A2A843862AF0A7E70028DB72 /* Leaderboard */,
 				A2A843852AF0A7DF0028DB72 /* Profile */,
-				A2D614532AF43E54004900B8 /* Edit Profile */,
 				A2A843572AF0A2350028DB72 /* Main.storyboard */,
 				A2A8435A2AF0A2360028DB72 /* Assets.xcassets */,
 				A2A8435F2AF0A2360028DB72 /* Info.plist */,
@@ -287,15 +282,6 @@
 				A28A2B182B0EBB0C00F908D6 /* LocationManager.swift */,
 			);
 			path = Journey;
-			sourceTree = "<group>";
-		};
-		A2D614532AF43E54004900B8 /* Edit Profile */ = {
-			isa = PBXGroup;
-			children = (
-				A2D614562AF43E85004900B8 /* EditProfileView.swift */,
-				A2D614542AF43E73004900B8 /* EditProfileViewController.swift */,
-			);
-			path = "Edit Profile";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,7 +400,6 @@
 				A28A2B172B0EBAFE00F908D6 /* MapAnnotationDelegate.swift in Sources */,
 				A2A8436C2AF0A6C20028DB72 /* WelcomeViewController.swift in Sources */,
 				A248AAC12B0AD3B00073B679 /* ProgressSpinnerViewController.swift in Sources */,
-				A2D614552AF43E73004900B8 /* EditProfileViewController.swift in Sources */,
 				A28A2B192B0EBB0C00F908D6 /* LocationManager.swift in Sources */,
 				A248AAFF2B0AD9A00073B679 /* LoginFirebaseManager.swift in Sources */,
 				A2A843542AF0A2350028DB72 /* SceneDelegate.swift in Sources */,
@@ -422,7 +407,6 @@
 				A28A2B152B0EBAEF00F908D6 /* Place.swift in Sources */,
 				A2A843742AF0A7450028DB72 /* LoginView.swift in Sources */,
 				A2A843762AF0A7500028DB72 /* SignUpView.swift in Sources */,
-				A2D614572AF43E85004900B8 /* EditProfileView.swift in Sources */,
 				A2A843822AF0A7D00028DB72 /* LeaderboardView.swift in Sources */,
 				A248AB012B0AD9AF0073B679 /* LoginProgressIndicatorManager.swift in Sources */,
 				A248AAFD2B0AD7BC0073B679 /* Configs.swift in Sources */,
