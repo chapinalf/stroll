@@ -33,8 +33,8 @@ extension JourneyViewController: MKMapViewDelegate{
         guard let annotation = view.annotation as? Place else { return }
         
         let ac = UIAlertController(
-            title: annotation.title,
-            message: "Navigate to \(annotation.title!) now?",
+            title: "Navigate now?",
+            message: "You will be brought to the Maps app to navigate you to \(place.title!). Do not forget to come back and check in once you arrive!",
             preferredStyle: .alert
         )
         ac.addAction(UIAlertAction(title: "Navigate", style: .default, handler: {_ in
