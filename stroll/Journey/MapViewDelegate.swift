@@ -1,5 +1,5 @@
 //
-//  MapAnnotationDelegate.swift
+//  MapViewDelegate.swift
 //  stroll
 //
 //  Created by Chapin Alf on 11/22/23.
@@ -45,5 +45,12 @@ extension JourneyViewController: MKMapViewDelegate{
         }))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.blue
+        renderer.lineWidth = 3.0
+        return renderer
     }
 }
