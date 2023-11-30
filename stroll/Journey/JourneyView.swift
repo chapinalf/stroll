@@ -13,6 +13,7 @@ import MapKit
 class JourneyView: UIView {
     var mapView:MKMapView!
     var buttonLoading:UIButton!
+    var buttonRouteNotFound:UIButton!
     var buttonCurrentLocation:UIButton!
     var buttonNavigate:UIButton!
     var buttonCheckIn:UIButton!
@@ -22,6 +23,7 @@ class JourneyView: UIView {
         backgroundColor = .white
         setupMapView()
         setupButtonLoading()
+        setupButtonRouteNotFound()
         setupButtonCurrentLocation()
         setupButtonNavigate()
         setupButtonCheckIn()
@@ -52,6 +54,27 @@ class JourneyView: UIView {
         
         buttonLoading.isEnabled = false
         self.addSubview(buttonLoading)
+    }
+    
+    func setupButtonRouteNotFound(){
+        buttonRouteNotFound = UIButton(type: .system)
+        buttonRouteNotFound.setTitle("A route cannot be found.\nWalking directions are not available between these locations.", for: .normal)
+        buttonRouteNotFound.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
+        buttonRouteNotFound.titleLabel?.numberOfLines = 0
+        buttonRouteNotFound.setImage(UIImage(systemName: "exclamationmark.circle"), for: .normal)
+        buttonRouteNotFound.layer.backgroundColor = UIColor.black.cgColor
+        buttonRouteNotFound.tintColor = .white
+        buttonRouteNotFound.layer.cornerRadius = 10
+        
+        buttonRouteNotFound.layer.shadowOffset = .zero
+        buttonRouteNotFound.layer.shadowRadius = 4
+        buttonRouteNotFound.layer.shadowOpacity = 0.7
+        
+        buttonRouteNotFound.translatesAutoresizingMaskIntoConstraints = false
+        
+        buttonRouteNotFound.isEnabled = false
+        buttonRouteNotFound.isHidden = true
+        self.addSubview(buttonRouteNotFound)
     }
     
     func setupButtonCurrentLocation(){
@@ -103,6 +126,11 @@ class JourneyView: UIView {
             buttonLoading.centerYAnchor.constraint(equalTo: mapView.centerYAnchor),
             buttonLoading.widthAnchor.constraint(equalToConstant: 240),
             buttonLoading.heightAnchor.constraint(equalToConstant: 40),
+            
+            buttonRouteNotFound.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
+            buttonRouteNotFound.centerYAnchor.constraint(equalTo: mapView.centerYAnchor),
+            buttonRouteNotFound.widthAnchor.constraint(equalToConstant: 240),
+            buttonRouteNotFound.heightAnchor.constraint(equalToConstant: 40),
             
             buttonCurrentLocation.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -16),
             buttonCurrentLocation.bottomAnchor.constraint(equalTo: self.mapView.bottomAnchor, constant: -8),
