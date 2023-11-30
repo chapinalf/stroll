@@ -12,15 +12,15 @@ struct Location: Codable{
     @DocumentID var id: String?
     var name: String
     var info: String
-    var pictureId: Int
-    var latitude: Double
+    var photoURL: String
     var longitude: Double
+    var latitude: Double
     
-    init(name: String, info: String, pictureId: Int, latitude: Double, longitude: Double) {
+    init(name: String, info: String, photoURL: String, longitude: Double,  latitude: Double) {
         self.name = name
         self.info = info
-        self.pictureId = pictureId
-        self.latitude = latitude
+        self.photoURL = photoURL
         self.longitude = longitude
+        self.latitude = latitude
     }
 }
