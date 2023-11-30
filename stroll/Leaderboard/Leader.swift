@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Leader{
+struct Leader: Codable{
     var name: String?
-    var strolls: Int?
-    var streak: Int?
+    var strollsTotal: Int?
+    var strollsStreak: Int?
     
-    init(name: String? = nil, strolls: Int? = nil, streak: Int? = nil) {
+    init(name: String? = nil, strollsTotal: Int? = nil, strollsStreak: Int? = nil) {
         self.name = name
-        self.strolls = strolls
-        self.streak = streak
+        self.strollsTotal = strollsTotal
+        self.strollsStreak = strollsStreak
     }
     
 }
