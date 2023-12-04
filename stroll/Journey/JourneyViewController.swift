@@ -7,6 +7,8 @@
 
 import UIKit
 import MapKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class JourneyViewController: UIViewController {
     let journeyView = JourneyView()
@@ -14,6 +16,8 @@ class JourneyViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     var place:Place!
+    
+    let database = Firestore.firestore()
     
     override func loadView() {
         view = journeyView
@@ -27,13 +31,16 @@ class JourneyViewController: UIViewController {
         setupLocationManager()
         
         //MARK: Annotating Northeastern University...
-        place = Place(
-            title: "Northeastern University",
-            coordinate: CLLocationCoordinate2D(latitude: 42.339918, longitude: -71.089797),
-            info: "LVX VERITAS VIRTVS"
-        )
+//        place = Place(
+//            title: "Northeastern University",
+//            coordinate: CLLocationCoordinate2D(latitude: 42.339918, longitude: -71.089797),
+//            info: "LVX VERITAS VIRTVS"
+//        )
+//        setTodaysLocation()
         
-        journeyView.mapView.addAnnotation(place)
+        if let uwPlace = place {
+            journeyView.mapView.addAnnotation(uwPlace)
+        }
         journeyView.mapView.delegate = self
         
         journeyView.buttonCurrentLocation.addTarget(self, action: #selector(onButtonCurrentLocationTapped), for: .touchUpInside)
@@ -45,6 +52,25 @@ class JourneyViewController: UIViewController {
         journeyView.mapView.showsUserLocation = true
         
     }
+
+//    func setTodaysLocation() {
+//        let docRef = database.collection("locations").document("Boston").collection("Places").document("2023-12-01")
+//        docRef.getDocument(completion: { (document, error) in
+//            if let document = document, document.exists {
+//                do{
+//                    let location = try document.data(as: Location.self)
+//                    self.place = Place(
+//                        title: location.name,
+//                        coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
+//                        info: location.info)
+//                    print(self.place)
+//                }catch{
+//                    print("ERROR MESSAGE: \(error)")
+//                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+//                }
+//            }
+//        }
+//                           }
     
     @objc func onButtonCurrentLocationTapped(){
         if let location = locationManager.location {
@@ -75,10 +101,10 @@ class JourneyViewController: UIViewController {
             let placeLocation = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             let distance = location.distance(from: placeLocation)
             
-            if distance <= 3 {
-                print("User is at the target location.")
+            if distance <= 4 { //in meters
+                showErrorAlert("Checked in", "User is at the target location.")
             } else {
-                print("User is not at the target location.")
+                showErrorAlert("Not checked in", "User is not at the target location.")
             }
         } else {
             showErrorAlert("Your location is needed!", "Please share your location with the app and try again!")

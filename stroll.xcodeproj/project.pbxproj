@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5482F3812B1A7358000E80BA /* LeaderBoardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5482F3802B1A7358000E80BA /* LeaderBoardViewCell.swift */; };
 		54BFC6BF2B16731A0095C6FC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFC6BE2B16731A0095C6FC /* Location.swift */; };
 		A22B3CA52AF17A9A003AB877 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22B3CA42AF17A9A003AB877 /* HomepageViewController.swift */; };
 		A248AABF2B0AD39D0073B679 /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248AABE2B0AD39D0073B679 /* ProgressSpinnerDelegate.swift */; };
@@ -75,7 +74,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5482F3802B1A7358000E80BA /* LeaderBoardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewCell.swift; sourceTree = "<group>"; };
 		54BFC6BE2B16731A0095C6FC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A22B3CA42AF17A9A003AB877 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
 		A248AABE2B0AD39D0073B679 /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
@@ -155,15 +153,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5482F3842B1A777D000E80BA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A2A843652AF0A2800028DB72 /* HomepageView.swift */,
-				5482F3802B1A7358000E80BA /* LeaderBoardViewCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		A248AAC22B0AD3CB0073B679 /* Progress Indicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +215,7 @@
 		A2A843672AF0A2840028DB72 /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
-				5482F3842B1A777D000E80BA /* Views */,
+				A2A843652AF0A2800028DB72 /* HomepageView.swift */,
 				A22B3CA42AF17A9A003AB877 /* HomepageViewController.swift */,
 			);
 			path = Homepage;

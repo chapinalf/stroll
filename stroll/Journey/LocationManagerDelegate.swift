@@ -26,14 +26,20 @@ extension JourneyViewController: CLLocationManagerDelegate{
         
         guard let userLocation = locations.last?.coordinate else { return }
         
-        drawRoute(from: userLocation, to: place.coordinate)
+        if let uwPlace = place {
+            drawRoute(from: userLocation, to: uwPlace.coordinate)
+        }
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location error: \(error.localizedDescription)")
     }
     
     func drawRoute(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {
+        //remove existing overlays before drawing a new route
+        journeyView.mapView.removeOverlays(journeyView.mapView.overlays)
+        
         let sourcePlacemark = MKPlacemark(coordinate: source, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destination, addressDictionary: nil)
         
@@ -55,9 +61,10 @@ extension JourneyViewController: CLLocationManagerDelegate{
                 // Center the map to show the entire route
                 let routeRect = route.polyline.boundingMapRect
                 journeyView.mapView.setVisibleMapRect(routeRect, edgePadding: UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0), animated: true)
-            } else {
-                journeyView.buttonRouteNotFound.isHidden = false
-            }
+            } 
+//            else {
+//                journeyView.buttonRouteNotFound.isHidden = false
+//            }
         }
     }
 }

@@ -97,28 +97,6 @@ class HomepageViewController: UIViewController {
             }
         }
     }
-    
-//    func setLeaderBoard1() {
-//        //look into the current date get all of the users that have completed today's stroll
-//        self.database.collection("locations").document("Boston").collection("Places").document("2023-12-01").collection("users")
-//            .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
-//                if let documents = querySnapshot?.documents{
-//                    print("documents: \(documents)")
-//                    self.completedUsers.removeAll()
-//                    //go through all the users
-//                    for document in documents{
-//                        do{
-//                            let user = try document.data(as: User.self)
-//                            self.completedUsers.append(user)
-//                            print("USER: \(user)")
-//                        }catch{
-//                            print("ERROR: \(error)")
-//                        }
-//                    }
-//                    self.homepageView.leaderBoard.reloadData()
-//                }
-//            })
-//    }
 
     
     func setLeaderBoard() {
@@ -127,7 +105,7 @@ class HomepageViewController: UIViewController {
             .addSnapshotListener(includeMetadataChanges: false, listener: { querySnapshot, error in
                 if let documents = querySnapshot?.documents {
                     print("documents: \(documents)")
-//                    self.completedUsers.removeAll()
+                    self.completedUsers.removeAll()
 
                     // Iterate through all the users
                     for document in documents {
