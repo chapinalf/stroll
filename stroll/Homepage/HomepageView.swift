@@ -65,7 +65,6 @@ class HomepageView: UIView {
     }
     func setUpLocationPhoto() {
         locationPhoto = UIImageView()
-        locationPhoto.image = UIImage(named: "Caffe Nero")
         locationPhoto.contentMode = .scaleAspectFit // Adjust the content mode to your needs.
         locationPhoto.translatesAutoresizingMaskIntoConstraints = false
         locationPhoto.layer.cornerRadius = 20 // Adjust the corner radius to your preference
@@ -160,7 +159,7 @@ class HomepageView: UIView {
             locationPhoto.widthAnchor.constraint(equalToConstant: 325),
             locationPhoto.heightAnchor.constraint(equalToConstant: 325),
             
-            startButton.bottomAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: -25),
+            startButton.bottomAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: 25),
             startButton.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
             leaderBoardLabel.topAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: 100),

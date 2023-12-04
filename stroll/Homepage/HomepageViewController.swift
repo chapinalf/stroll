@@ -20,15 +20,13 @@ class HomepageViewController: UIViewController {
 
     var completedUsers = ""
     
-    var userLocation: String!
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         
-    
         setTodaysLocation()
         setLeaderBoard()
+        
         
     }
     
@@ -67,33 +65,44 @@ class HomepageViewController: UIViewController {
     }
     
 //    //grabs the users location so we can use it to grab to appropriate city
-//    func getUserLocation() {
+//    func getUserLocation() -> String {
+//        var userLocation = String()
 //        //grabbing the users city location so we can access the city document and display today's location
 //        database.collection("users").document((Auth.auth().currentUser?.email)!).addSnapshotListener { documentSnapshot, error in
 //              if let document = documentSnapshot {
 //                      do{
 //                          let user = try document.data(as: User.self)
-//                          let userLocation = user.city
+//                          let userLocation = String(user.city)
+//                          print("USER LOCATION: \(userLocation)")
 //                      }catch{
 //                          print(error)
 //                          self.showErrorAlert("Could not load profile!", "The profile could not be loaded. Please try again later!")
 //                      }
 //                  }
 //        }
+//        return userLocation
 //    }
-//    
+    
     func setTodaysLocation() {
         self.database.collection("locations").document("Boston").collection("Places").document("2023-12-01").addSnapshotListener { documentSnapshot, error in
             if let document = documentSnapshot {
                 do{
                     let location = try document.data(as: Location.self)
                     self.homepageView.locationLabel.text =  String(location.name)
-                    //                    self.homepageView.locationPhoto.loadRemoteImage(from: Storage.storage().reference().child("Location Photos/ Caffe Nero.jpg"))
-                    self.homepageView.additionalInformationText.text = location.info
-                }catch{
-                    print("ERROR MESSAGE: \(error)")
-                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
-                }
+                    let httpsReference = Storage.storage().reference(forURL: location.photoURL)
+                    
+                    httpsReference.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                        if let error = error {
+                            //error
+                        } else {
+                            self.homepageView.locationPhoto.image = UIImage(data: data!)
+                        }
+                        self.homepageView.additionalInformationText.text = location.info
+                    }
+                    }catch{
+                        print("ERROR MESSAGE: \(error)")
+                        self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+                    }
             }
         }
     }
