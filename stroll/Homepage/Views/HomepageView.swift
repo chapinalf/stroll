@@ -16,6 +16,10 @@ class HomepageView: UIView {
     var locationPhoto: UIImageView!
     
     var leaderBoardLabel: UILabel!
+    
+    var completedName: UILabel!
+    
+    
     var startButton: UIButton!
 
     var separatorLine: UIView!
@@ -36,6 +40,8 @@ class HomepageView: UIView {
         setUpLeaderBoardLabel()
         setUpStartButton()
         
+        setUpCompletedName()
+        
         setUpAdditionalInformationTitle()
         setUpAdditionalInformationText()
 
@@ -51,7 +57,6 @@ class HomepageView: UIView {
     }
     func setUpLocationLabel() {
         locationLabel = UILabel()
-        locationLabel.text = "TODAY'S LOCATION"
         locationLabel.textAlignment = .center
         locationLabel.textColor = UIColor.black
         locationLabel.font = UIFont.boldSystemFont(ofSize: 35.0)
@@ -60,7 +65,7 @@ class HomepageView: UIView {
     }
     func setUpLocationPhoto() {
         locationPhoto = UIImageView()
-        locationPhoto.image = UIImage(named: "Nero") // Replace "your_image_name" with the actual name of your image asset.
+        locationPhoto.image = UIImage(named: "Caffe Nero")
         locationPhoto.contentMode = .scaleAspectFit // Adjust the content mode to your needs.
         locationPhoto.translatesAutoresizingMaskIntoConstraints = false
         locationPhoto.layer.cornerRadius = 20 // Adjust the corner radius to your preference
@@ -95,6 +100,20 @@ class HomepageView: UIView {
         startButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         startButton.layer.shadowRadius = 8
     }
+    func setUpCompletedName() {
+        completedName = UILabel()
+        completedName.numberOfLines = 0 // Allow multiple lines
+        completedName.textAlignment = .center
+        completedName.textColor = UIColor.black
+        completedName.font = UIFont.systemFont(ofSize: 14.0)
+        // Set the line break mode to word wrapping
+        completedName.lineBreakMode = .byWordWrapping
+        // Set the number of lines to 0 for unlimited lines (auto-wrap)
+        completedName.numberOfLines = 0
+        completedName.preferredMaxLayoutWidth = 300
+        completedName.translatesAutoresizingMaskIntoConstraints = false
+        contentWrapper.addSubview(completedName)
+    }
     func setUpAdditionalInformationTitle() {
         additionalInformationTitle = UILabel()
         additionalInformationTitle.text = "Additional Information about Today's Location"
@@ -106,25 +125,15 @@ class HomepageView: UIView {
     }
     func setUpAdditionalInformationText() {
         additionalInformationText = UILabel()
-        additionalInformationText.text = """
-        Our goal since the very beginning has been
-        to create a place that radiates comfort,
-        relaxation and warmth. A place to meet
-        friends, work or just watch the world go by.
-        A local neighborhood spot.
-
-        We are lucky to have some fantastic people
-        in our company that bring this to life,
-        giving each store its own character through
-        a combination of personal service and
-        unique design.
-
-        And, of course, great coffee.
-        """
         additionalInformationText.numberOfLines = 0 // Allow multiple lines
         additionalInformationText.textAlignment = .center
         additionalInformationText.textColor = UIColor.black
         additionalInformationText.font = UIFont.systemFont(ofSize: 14.0)
+        // Set the line break mode to word wrapping
+        additionalInformationText.lineBreakMode = .byWordWrapping
+        // Set the number of lines to 0 for unlimited lines (auto-wrap)
+        additionalInformationText.numberOfLines = 0
+        additionalInformationText.preferredMaxLayoutWidth = 300
         additionalInformationText.translatesAutoresizingMaskIntoConstraints = false
         contentWrapper.addSubview(additionalInformationText)
     }
@@ -140,6 +149,7 @@ class HomepageView: UIView {
             contentWrapper.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             contentWrapper.widthAnchor.constraint(equalTo:self.safeAreaLayoutGuide.widthAnchor),
             contentWrapper.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor),
+
             
             
             locationLabel.topAnchor.constraint(equalTo: contentWrapper.topAnchor, constant: 20),
@@ -150,14 +160,16 @@ class HomepageView: UIView {
             locationPhoto.widthAnchor.constraint(equalToConstant: 325),
             locationPhoto.heightAnchor.constraint(equalToConstant: 325),
             
-            startButton.topAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: -35),
+            startButton.bottomAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: -25),
             startButton.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
             leaderBoardLabel.topAnchor.constraint(equalTo: locationPhoto.bottomAnchor, constant: 100),
             leaderBoardLabel.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
+            completedName.topAnchor.constraint(equalTo: leaderBoardLabel.bottomAnchor, constant: 10),
+            completedName.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
-            additionalInformationTitle.topAnchor.constraint(equalTo: leaderBoardLabel.bottomAnchor, constant: 300),
+            additionalInformationTitle.topAnchor.constraint(equalTo: leaderBoardLabel.bottomAnchor, constant: 60),
             additionalInformationTitle.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
             additionalInformationText.topAnchor.constraint(equalTo: additionalInformationTitle.bottomAnchor, constant: 10),
