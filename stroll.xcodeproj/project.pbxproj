@@ -47,9 +47,10 @@
 		A248AB052B0ADB4C0073B679 /* SignUpProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248AB042B0ADB4C0073B679 /* SignUpProgressIndicatorManager.swift */; };
 		A248AB082B0ADC950073B679 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248AB072B0ADC950073B679 /* User.swift */; };
 		A248AB0A2B0ADE6C0073B679 /* SignUpPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248AB092B0ADE6C0073B679 /* SignUpPhotoManager.swift */; };
+		A2839B802B1835E100940CBC /* ProfileProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2839B7F2B1835E100940CBC /* ProfileProgressIndicatorManager.swift */; };
 		A28A2B152B0EBAEF00F908D6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A2B142B0EBAEF00F908D6 /* Place.swift */; };
-		A28A2B172B0EBAFE00F908D6 /* MapAnnotationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A2B162B0EBAFE00F908D6 /* MapAnnotationDelegate.swift */; };
-		A28A2B192B0EBB0C00F908D6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A2B182B0EBB0C00F908D6 /* LocationManager.swift */; };
+		A28A2B172B0EBAFE00F908D6 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A2B162B0EBAFE00F908D6 /* MapViewDelegate.swift */; };
+		A28A2B192B0EBB0C00F908D6 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A2B182B0EBB0C00F908D6 /* LocationManagerDelegate.swift */; };
 		A2A843522AF0A2350028DB72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843512AF0A2350028DB72 /* AppDelegate.swift */; };
 		A2A843542AF0A2350028DB72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843532AF0A2350028DB72 /* SceneDelegate.swift */; };
 		A2A843562AF0A2350028DB72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A843552AF0A2350028DB72 /* ViewController.swift */; };
@@ -87,9 +88,10 @@
 		A248AB042B0ADB4C0073B679 /* SignUpProgressIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		A248AB072B0ADC950073B679 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A248AB092B0ADE6C0073B679 /* SignUpPhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhotoManager.swift; sourceTree = "<group>"; };
+		A2839B7F2B1835E100940CBC /* ProfileProgressIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		A28A2B142B0EBAEF00F908D6 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		A28A2B162B0EBAFE00F908D6 /* MapAnnotationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationDelegate.swift; sourceTree = "<group>"; };
-		A28A2B182B0EBB0C00F908D6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A28A2B162B0EBAFE00F908D6 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
+		A28A2B182B0EBB0C00F908D6 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		A2A8434E2AF0A2350028DB72 /* stroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A843512AF0A2350028DB72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2A843532AF0A2350028DB72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			children = (
 				A2A843832AF0A7D90028DB72 /* ProfileView.swift */,
 				A2A8437D2AF0A7B50028DB72 /* ProfileViewController.swift */,
+				A2839B7F2B1835E100940CBC /* ProfileProgressIndicatorManager.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -289,8 +292,8 @@
 				A2A8437F2AF0A7C40028DB72 /* JourneyView.swift */,
 				A2A843792AF0A7750028DB72 /* JourneyViewController.swift */,
 				A28A2B142B0EBAEF00F908D6 /* Place.swift */,
-				A28A2B162B0EBAFE00F908D6 /* MapAnnotationDelegate.swift */,
-				A28A2B182B0EBB0C00F908D6 /* LocationManager.swift */,
+				A28A2B162B0EBAFE00F908D6 /* MapViewDelegate.swift */,
+				A28A2B182B0EBB0C00F908D6 /* LocationManagerDelegate.swift */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -400,7 +403,7 @@
 			files = (
 				FD5D8EA52B06DD0B0004E0C2 /* Leader.swift in Sources */,
 				A2A843712AF0A7260028DB72 /* LoginViewController.swift in Sources */,
-				5482F3812B1A7358000E80BA /* LeaderBoardViewCell.swift in Sources */,
+				A2839B802B1835E100940CBC /* ProfileProgressIndicatorManager.swift in Sources */,
 				A2A8436A2AF0A6B50028DB72 /* WelcomeView.swift in Sources */,
 				A2A843562AF0A2350028DB72 /* ViewController.swift in Sources */,
 				A2A843522AF0A2350028DB72 /* AppDelegate.swift in Sources */,
@@ -409,10 +412,10 @@
 				A2A843782AF0A75A0028DB72 /* SignUpViewController.swift in Sources */,
 				A248AB082B0ADC950073B679 /* User.swift in Sources */,
 				A2A843802AF0A7C40028DB72 /* JourneyView.swift in Sources */,
-				A28A2B172B0EBAFE00F908D6 /* MapAnnotationDelegate.swift in Sources */,
+				A28A2B172B0EBAFE00F908D6 /* MapViewDelegate.swift in Sources */,
 				A2A8436C2AF0A6C20028DB72 /* WelcomeViewController.swift in Sources */,
 				A248AAC12B0AD3B00073B679 /* ProgressSpinnerViewController.swift in Sources */,
-				A28A2B192B0EBB0C00F908D6 /* LocationManager.swift in Sources */,
+				A28A2B192B0EBB0C00F908D6 /* LocationManagerDelegate.swift in Sources */,
 				A248AAFF2B0AD9A00073B679 /* LoginFirebaseManager.swift in Sources */,
 				A2A843542AF0A2350028DB72 /* SceneDelegate.swift in Sources */,
 				A2A843842AF0A7D90028DB72 /* ProfileView.swift in Sources */,

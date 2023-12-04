@@ -65,7 +65,7 @@ class LeaderboardView: UIView {
     func setupYourStatsContainer() {
         yourStatsContainer = UIView()
         yourStatsContainer.translatesAutoresizingMaskIntoConstraints = false
-        yourStatsContainer.backgroundColor = UIColor.white
+        yourStatsContainer.backgroundColor = UIColor(red: 109/255, green: 205/255, blue: 255/255, alpha: 1)
         self.addSubview(yourStatsContainer)
         
     }
@@ -168,8 +168,8 @@ class LeaderboardView: UIView {
             tableViewLeaderboard.heightAnchor.constraint(equalToConstant: 500),
             
             yourStatsContainer.topAnchor.constraint(equalTo: tableViewLeaderboard.bottomAnchor),
-            yourStatsContainer.leadingAnchor.constraint(equalTo:  self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            yourStatsContainer.trailingAnchor.constraint(equalTo:  self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            yourStatsContainer.leadingAnchor.constraint(equalTo:  self.safeAreaLayoutGuide.leadingAnchor),
+            yourStatsContainer.trailingAnchor.constraint(equalTo:  self.safeAreaLayoutGuide.trailingAnchor),
             yourStatsContainer.bottomAnchor.constraint(equalTo:  self.keyboardLayoutGuide.topAnchor, constant: -8),
             
             labelYourStats.topAnchor.constraint(equalTo: yourStatsContainer.topAnchor, constant: 8),
