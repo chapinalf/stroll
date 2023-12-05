@@ -64,25 +64,6 @@ class HomepageViewController: UIViewController {
         return formattedDate
     }
     
-//    //grabs the users location so we can use it to grab to appropriate city
-//    func getUserLocation() -> String {
-//        var userLocation = String()
-//        //grabbing the users city location so we can access the city document and display today's location
-//        database.collection("users").document((Auth.auth().currentUser?.email)!).addSnapshotListener { documentSnapshot, error in
-//              if let document = documentSnapshot {
-//                      do{
-//                          let user = try document.data(as: User.self)
-//                          let userLocation = String(user.city)
-//                          print("USER LOCATION: \(userLocation)")
-//                      }catch{
-//                          print(error)
-//                          self.showErrorAlert("Could not load profile!", "The profile could not be loaded. Please try again later!")
-//                      }
-//                  }
-//        }
-//        return userLocation
-//    }
-    
     func setTodaysLocation() {
         self.database.collection("locations").document("Boston").collection("Places").document("2023-12-01").addSnapshotListener { documentSnapshot, error in
             if let document = documentSnapshot {

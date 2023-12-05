@@ -17,8 +17,9 @@ struct User: Codable{
     var strollsStreak: Int
     var milesTotal: Double
     var milesStreak: Double
+    var lastStrollDate: String
     
-    init(name: String, phoneNumber: Int, city: String, strollsTotal: Int, strollsStreak: Int, milesTotal: Double, milesStreak: Double) {
+    init(name: String, phoneNumber: Int, city: String, strollsTotal: Int, strollsStreak: Int, milesTotal: Double, milesStreak: Double, lastStrollDate: String) {
         self.name = name
         self.phoneNumber = phoneNumber
         self.city = city
@@ -26,5 +27,6 @@ struct User: Codable{
         self.strollsStreak = strollsStreak
         self.milesTotal = milesTotal
         self.milesStreak = milesStreak
+        self.lastStrollDate = lastStrollDate
     }
 }

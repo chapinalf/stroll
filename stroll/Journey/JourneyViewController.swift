@@ -7,6 +7,8 @@
 
 import UIKit
 import MapKit
+import CoreLocation
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -19,6 +21,10 @@ class JourneyViewController: UIViewController {
     
     let database = Firestore.firestore()
     
+    var miles = 0.0
+    
+    var user:User!
+    
     override func loadView() {
         view = journeyView
     }
@@ -28,20 +34,7 @@ class JourneyViewController: UIViewController {
         
         title = "Journey"
         
-        setupLocationManager()
-        
-        //MARK: Annotating Northeastern University...
-//        place = Place(
-//            title: "Northeastern University",
-//            coordinate: CLLocationCoordinate2D(latitude: 42.339918, longitude: -71.089797),
-//            info: "LVX VERITAS VIRTVS"
-//        )
-//        setTodaysLocation()
-        
-        if let uwPlace = place {
-            journeyView.mapView.addAnnotation(uwPlace)
-        }
-        journeyView.mapView.delegate = self
+        getUser()
         
         journeyView.buttonCurrentLocation.addTarget(self, action: #selector(onButtonCurrentLocationTapped), for: .touchUpInside)
         
@@ -52,25 +45,40 @@ class JourneyViewController: UIViewController {
         journeyView.mapView.showsUserLocation = true
         
     }
+    
+    func getUser() {
+        database.collection("users").document((Auth.auth().currentUser?.email)!).addSnapshotListener { documentSnapshot, error in
+            if let document = documentSnapshot {
+                do{
+                    self.user = try document.data(as: User.self)
+                    self.setTodaysLocation()
+                }catch{
+                    print(error)
+                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+                }
+            }
+        }
+    }
 
-//    func setTodaysLocation() {
-//        let docRef = database.collection("locations").document("Boston").collection("Places").document("2023-12-01")
-//        docRef.getDocument(completion: { (document, error) in
-//            if let document = document, document.exists {
-//                do{
-//                    let location = try document.data(as: Location.self)
-//                    self.place = Place(
-//                        title: location.name,
-//                        coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
-//                        info: location.info)
-//                    print(self.place)
-//                }catch{
-//                    print("ERROR MESSAGE: \(error)")
-//                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
-//                }
-//            }
-//        }
-//                           }
+    func setTodaysLocation() {
+        let docRef = database.collection("locations").document(user.city).collection("Places").document(getCurrentDate())
+        docRef.getDocument(completion: { (document, error) in
+            if let document = document, document.exists {
+                do{
+                    let location = try document.data(as: Location.self)
+                    self.place = Place(
+                        title: location.name,
+                        coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
+                        info: location.info)
+                    self.setupLocationManager()
+                    self.journeyView.mapView.addAnnotation(self.place)
+                    self.journeyView.mapView.delegate = self
+                }catch{
+                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+                }
+            }
+        })
+    }
     
     @objc func onButtonCurrentLocationTapped(){
         if let location = locationManager.location {
@@ -102,12 +110,47 @@ class JourneyViewController: UIViewController {
             let distance = location.distance(from: placeLocation)
             
             if distance <= 4 { //in meters
-                showErrorAlert("Checked in", "User is at the target location.")
+                if(user.lastStrollDate != getCurrentDate()){
+                    showErrorAlert("Checked in", "You have been checked in!")
+                    checkInFirebase()
+                } else {
+                    showErrorAlert("You have already checked in.", "Complete you next stroll tomorrow!")
+                }
             } else {
-                showErrorAlert("Not checked in", "User is not at the target location.")
+                showErrorAlert("Not checked in", "You are not at the target location.")
             }
         } else {
             showErrorAlert("Your location is needed!", "Please share your location with the app and try again!")
+        }
+    }
+    
+    func checkInFirebase() {
+        if(user.lastStrollDate == getYesterdaysDate()){
+            database.collection("users").document((Auth.auth().currentUser?.email)!).updateData([
+              "strollsStreak": FieldValue.increment(Int64(1)),
+              "strollsTotal": FieldValue.increment(Int64(1)),
+              "milesStreak": FieldValue.increment(miles),
+              "milesTotal": FieldValue.increment(miles),
+              "lastStrollDate": getCurrentDate(),
+            ])
+        } else {
+            database.collection("users").document((Auth.auth().currentUser?.email)!).updateData([
+              "strollsStreak": 0,
+              "strollsTotal": FieldValue.increment(Int64(1)),
+              "milesStreak": 0.0,
+              "milesTotal": FieldValue.increment(miles),
+              "lastStrollDate": getCurrentDate(),
+            ])
+        }
+        
+        let docRef = database.collection("locations").document(user.city).collection("Places").document(getCurrentDate()).collection("users")
+        docRef.document(user.id!).setData([
+            "user": database.collection("users").document(user.id!),
+        ]) { err in
+          if let err = err {
+              self.showErrorAlert("Not checked in", "You could not be checked in. Please try again later!")
+            print("Error writing document: \(err)")
+          }
         }
     }
 
@@ -116,6 +159,22 @@ class JourneyViewController: UIViewController {
         let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true)
+    }
+    
+    func getCurrentDate() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = dateFormatter.string(from: currentDate)
+        return formattedDate
+    }
+    
+    func getYesterdaysDate() -> String {
+        let yesterday = Date(timeIntervalSinceNow: -86400)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = dateFormatter.string(from: yesterday)
+        return formattedDate
     }
     
 }

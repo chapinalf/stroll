@@ -56,6 +56,12 @@ extension JourneyViewController: CLLocationManagerDelegate{
             guard let self = self else { return }
             
             if let route = response?.routes.first {
+                let meters = (response?.routes.first?.distance)!
+                let milesConverted = meters * 0.000621371
+                if (milesConverted > miles) {
+                    miles = round(milesConverted * 10) / 10.0
+                }
+        
                 journeyView.mapView.addOverlay(route.polyline, level: .aboveRoads)
                 
                 // Center the map to show the entire route

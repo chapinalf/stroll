@@ -131,7 +131,7 @@ extension SignUpViewController{
             let collectionContacts = database
                 .collection("users")
             
-            let user = User(name: userName, phoneNumber: userPhoneNumber, city: userCity, strollsTotal: 0, strollsStreak: 0, milesTotal: 0, milesStreak: 0)
+            let user = User(name: userName, phoneNumber: userPhoneNumber, city: userCity, strollsTotal: 0, strollsStreak: 0, milesTotal: 0, milesStreak: 0, lastStrollDate: "2000-01-01")
             
             do{
                 try collectionContacts.document(userEmail).setData(from: user, completion: {(error) in
