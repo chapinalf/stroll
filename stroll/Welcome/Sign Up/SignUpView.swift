@@ -14,7 +14,7 @@ class SignUpView: UIView {
     var textFieldName: UITextField!
     var textFieldEmail: UITextField!
     var textFieldPhoneNumber: UITextField!
-    var cityPicker: UIPickerView!
+    var cityPicker: UIButton!
     var textFieldPassword: UITextField!
     var textFieldPasswordConfirm: UITextField!
     var buttonSignUp: UIButton!
@@ -87,10 +87,15 @@ class SignUpView: UIView {
     }
     
     func setupCityPicker(){
-            cityPicker = UIPickerView()
-            cityPicker.isUserInteractionEnabled = true
-            cityPicker.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview(cityPicker)
+        cityPicker = UIButton(type: .system)
+        cityPicker.setTitle("Choose your city!", for: .normal)
+        cityPicker.backgroundColor = .white
+        cityPicker.setTitleColor(.black, for: .normal)
+        cityPicker.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        cityPicker.layer.cornerRadius = 10
+        cityPicker.translatesAutoresizingMaskIntoConstraints = false
+        cityPicker.showsMenuAsPrimaryAction = true
+        self.addSubview(cityPicker)
         
         }
     
@@ -156,7 +161,9 @@ class SignUpView: UIView {
             textFieldPhoneNumber.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
             
             cityPicker.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            cityPicker.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 16),
+            cityPicker.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 5),
+            cityPicker.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
+            cityPicker.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
             
             textFieldPassword.topAnchor.constraint(equalTo: cityPicker.bottomAnchor, constant: 5),
             textFieldPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),

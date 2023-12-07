@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import PhotosUI
 import FirebaseStorage
 
-class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SignUpViewController: UIViewController {
 
     let signUpView = SignUpView()
     let database = Firestore.firestore()
@@ -23,7 +23,6 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var userPhoneNumber: Int!
     var userCity: String!
     
-    let cities: [String] = ["Boston"]
     var selectedCity = "Boston"
     
     
@@ -43,9 +42,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         view.addGestureRecognizer(tapRecognizer)
         
         signUpView.profilePic.menu = getMenuImagePicker()
-        
-        signUpView.cityPicker.delegate = self
-        signUpView.cityPicker.dataSource = self
+        signUpView.cityPicker.menu = getMenuCityPicker()
     }
     
     //MARK: sign up button tapped...
@@ -82,6 +79,16 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return UIMenu(title: "Select source", children: menuItems)
     }
     
+    func getMenuCityPicker() -> UIMenu{
+        let menuItems = [
+            UIAction(title: "Boston",handler: {(_) in
+                self.pickBoston()
+            }),
+        ]
+        
+        return UIMenu(title: "Select source", children: menuItems)
+    }
+    
     //MARK: take Photo using Camera...
     func pickUsingCamera(){
         let cameraController = UIImagePickerController()
@@ -104,20 +111,10 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         present(photoPicker, animated: true, completion: nil)
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            return 1
-        }
-        
-    //returns the number of rows in the current component...
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return cities.count
+    func pickBoston()
+    {
+        selectedCity = "Boston"
+        signUpView.cityPicker.setTitle("Boston", for: .normal)
     }
-        
-    //set the title of currently picked row...
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        // on change selection, update selectedMood...
-        selectedCity = cities[row]
-        return cities[row]
-    }
-
+    
 }
