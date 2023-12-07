@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import PhotosUI
 import FirebaseStorage
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     let signUpView = SignUpView()
     let database = Firestore.firestore()
@@ -22,6 +22,10 @@ class SignUpViewController: UIViewController {
     
     var userPhoneNumber: Int!
     var userCity: String!
+    
+    let cities: [String] = ["Boston"]
+    var selectedCity = "Boston"
+    
     
     //MARK: load the view...
     override func loadView() {
@@ -39,6 +43,9 @@ class SignUpViewController: UIViewController {
         view.addGestureRecognizer(tapRecognizer)
         
         signUpView.profilePic.menu = getMenuImagePicker()
+        
+        signUpView.cityPicker.delegate = self
+        signUpView.cityPicker.dataSource = self
     }
     
     //MARK: sign up button tapped...
@@ -95,6 +102,22 @@ class SignUpViewController: UIViewController {
         
         photoPicker.delegate = self
         present(photoPicker, animated: true, completion: nil)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            return 1
+        }
+        
+    //returns the number of rows in the current component...
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return cities.count
+    }
+        
+    //set the title of currently picked row...
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        // on change selection, update selectedMood...
+        selectedCity = cities[row]
+        return cities[row]
     }
 
 }

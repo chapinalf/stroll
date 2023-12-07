@@ -52,7 +52,6 @@ extension SignUpViewController{
         if let name = signUpView.textFieldName.text,
            let email = signUpView.textFieldEmail.text,
            let phoneNumberString = signUpView.textFieldPhoneNumber.text,
-           let city = signUpView.textFieldCity.text,
            let password = signUpView.textFieldPassword.text,
            let passwordConfirm = signUpView.textFieldPasswordConfirm.text{
             
@@ -72,7 +71,7 @@ extension SignUpViewController{
             } else if phoneNumberString.count != 10 {
                 self.showErrorAlert("Sign Up Failed!", "The provided phone number must be 10 digits! Please try again!")
                 self.hideActivityIndicator()
-            } else if city.isEmpty {
+            } else if selectedCity.isEmpty {
                 self.showErrorAlert("Sign Up Failed!", "The city which you are located in must be provided. Please try again!")
                 self.hideActivityIndicator()
             } else if password.isEmpty {
@@ -87,7 +86,7 @@ extension SignUpViewController{
             } else {
                 if let phoneNumber = Int(phoneNumberString) {
                     userPhoneNumber = phoneNumber
-                    userCity = city
+                    userCity = selectedCity
                     
                     //MARK: create the user in firebase...
                     Auth.auth().createUser(withEmail: email, password: password, completion: {result, error in

@@ -30,7 +30,7 @@ class LeaderboardViewController: UIViewController {
                           self.leaderboardView.labelStreakNum.text = String(user.strollsStreak)
                       }catch{
                           print(error)
-                          self.showErrorAlert("Could not load profile!", "The profile could not be loaded. Please try again later!")
+                          self.showErrorAlert("There was an issue loading profiles", "Please try again later!")
                       }
                   }
           }

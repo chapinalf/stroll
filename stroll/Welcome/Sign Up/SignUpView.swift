@@ -14,7 +14,7 @@ class SignUpView: UIView {
     var textFieldName: UITextField!
     var textFieldEmail: UITextField!
     var textFieldPhoneNumber: UITextField!
-    var textFieldCity: UITextField! //TODO: CHANGE TO DROPDOWN
+    var cityPicker: UIPickerView!
     var textFieldPassword: UITextField!
     var textFieldPasswordConfirm: UITextField!
     var buttonSignUp: UIButton!
@@ -31,7 +31,7 @@ class SignUpView: UIView {
         setupTextFieldName()
         setupTextFieldEmail()
         setupTextFieldPhoneNumber()
-        setupTextFieldCity()
+        setupCityPicker()
         setupTextFieldPassword()
         setupTextFieldPasswordConfirm()
         setupButtonSignUp()
@@ -86,13 +86,13 @@ class SignUpView: UIView {
         self.addSubview(textFieldPhoneNumber)
     }
     
-    func setupTextFieldCity(){
-        textFieldCity = UITextField()
-        textFieldCity.placeholder = "City"
-        textFieldCity.borderStyle = .roundedRect
-        textFieldCity.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(textFieldCity)
-    }
+    func setupCityPicker(){
+            cityPicker = UIPickerView()
+            cityPicker.isUserInteractionEnabled = true
+            cityPicker.translatesAutoresizingMaskIntoConstraints = false
+            self.addSubview(cityPicker)
+        
+        }
     
     func setupTextFieldPassword(){
         textFieldPassword = UITextField()
@@ -155,12 +155,10 @@ class SignUpView: UIView {
             textFieldPhoneNumber.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
             textFieldPhoneNumber.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
             
-            textFieldCity.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 5),
-            textFieldCity.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldCity.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
-            textFieldCity.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
+            cityPicker.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            cityPicker.topAnchor.constraint(equalTo: textFieldPhoneNumber.bottomAnchor, constant: 16),
             
-            textFieldPassword.topAnchor.constraint(equalTo: textFieldCity.bottomAnchor, constant: 5),
+            textFieldPassword.topAnchor.constraint(equalTo: cityPicker.bottomAnchor, constant: 5),
             textFieldPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             textFieldPassword.leadingAnchor.constraint(equalTo: labelSignUp.leadingAnchor),
             textFieldPassword.trailingAnchor.constraint(equalTo: labelSignUp.trailingAnchor),
