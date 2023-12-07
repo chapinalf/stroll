@@ -47,14 +47,16 @@ class JourneyViewController: UIViewController {
     }
     
     func getUser() {
-        database.collection("users").document((Auth.auth().currentUser?.email)!).addSnapshotListener { documentSnapshot, error in
-            if let document = documentSnapshot {
-                do{
-                    self.user = try document.data(as: User.self)
-                    self.setTodaysLocation()
-                }catch{
-                    print(error)
-                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+        if let email = Auth.auth().currentUser?.email {
+            database.collection("users").document(email).addSnapshotListener { documentSnapshot, error in
+                if let document = documentSnapshot {
+                    do{
+                        self.user = try document.data(as: User.self)
+                        self.setTodaysLocation()
+                    }catch{
+                        print(error)
+                        self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+                    }
                 }
             }
         }
