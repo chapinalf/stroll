@@ -168,7 +168,7 @@ class HomepageView: UIView {
             completedName.topAnchor.constraint(equalTo: leaderBoardLabel.bottomAnchor, constant: 10),
             completedName.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
-            additionalInformationTitle.topAnchor.constraint(equalTo: leaderBoardLabel.bottomAnchor, constant: 60),
+            additionalInformationTitle.topAnchor.constraint(equalTo: completedName.bottomAnchor, constant: 20),
             additionalInformationTitle.centerXAnchor.constraint(equalTo: contentWrapper.centerXAnchor),
             
             additionalInformationText.topAnchor.constraint(equalTo: additionalInformationTitle.bottomAnchor, constant: 10),

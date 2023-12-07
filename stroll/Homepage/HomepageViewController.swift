@@ -16,16 +16,20 @@ class HomepageViewController: UIViewController {
 
     let homepageView = HomepageView()
     
+    let childProgressView = ProgressSpinnerViewController()
+    
     let database = Firestore.firestore()
 
     var completedUsers = ""
+    
+    var user:User!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         
-        setTodaysLocation()
-        setLeaderBoard()
+        self.showActivityIndicator()
+        getUser()
         
         
     }
@@ -54,6 +58,22 @@ class HomepageViewController: UIViewController {
         }
     }
     
+    func getUser() {
+        database.collection("users").document((Auth.auth().currentUser?.email)!).addSnapshotListener { documentSnapshot, error in
+            if let document = documentSnapshot {
+                do{
+                    self.user = try document.data(as: User.self)
+                    self.setTodaysLocation()
+                    self.setLeaderBoard()
+                }catch{
+                    print(error)
+                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+                }
+            }
+        }
+    }
+
+    
     //grabs the current date and formattes it properly so we can use it to retreive today's location
     func getCurrentDate() -> String {
         let currentDate = Date()
@@ -65,33 +85,40 @@ class HomepageViewController: UIViewController {
     }
     
     func setTodaysLocation() {
-        self.database.collection("locations").document("Boston").collection("Places").document("2023-12-01").addSnapshotListener { documentSnapshot, error in
+        
+        self.database.collection("locations").document(user.city).collection("Places").document(getCurrentDate()).addSnapshotListener { documentSnapshot, error in
             if let document = documentSnapshot {
-                do{
+                do {
                     let location = try document.data(as: Location.self)
                     self.homepageView.locationLabel.text =  String(location.name)
+                    
                     let httpsReference = Storage.storage().reference(forURL: location.photoURL)
                     
-                    httpsReference.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                    httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
                         if let error = error {
-                            //error
+                            // Handle error
+                            self.hideActivityIndicator() // Hide activity indicator in case of an error
+                            self.showErrorAlert("Error", "Failed to load image: \(error.localizedDescription)")
                         } else {
                             self.homepageView.locationPhoto.image = UIImage(data: data!)
+                            self.homepageView.additionalInformationText.text = location.info
+                            self.hideActivityIndicator() // Hide activity indicator after successfully loading data
                         }
-                        self.homepageView.additionalInformationText.text = location.info
                     }
-                    }catch{
-                        print("ERROR MESSAGE: \(error)")
-                        self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
-                    }
+                } catch {
+                    print("ERROR MESSAGE: \(error)")
+                    self.hideActivityIndicator() // Hide activity indicator in case of an error
+                    self.showErrorAlert("Could not load location!", "The location could not be loaded. Please try again later!")
+                }
             }
         }
     }
 
+
     
     func setLeaderBoard() {
         // Look into the current date and get all users who completed today's stroll
-        self.database.collection("locations").document("Boston").collection("Places").document("2023-12-01").collection("users")
+        self.database.collection("locations").document(user.city).collection("Places").document(getCurrentDate()).collection("users")
             .addSnapshotListener(includeMetadataChanges: false, listener: { querySnapshot, error in
                 if let documents = querySnapshot?.documents {
                     print("documents: \(documents)")

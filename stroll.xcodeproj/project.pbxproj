@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5491DDD62B20E9600002420C /* HomepageActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5491DDD52B20E9600002420C /* HomepageActivityManager.swift */; };
 		54BFC6BF2B16731A0095C6FC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFC6BE2B16731A0095C6FC /* Location.swift */; };
 		A22B3CA52AF17A9A003AB877 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22B3CA42AF17A9A003AB877 /* HomepageViewController.swift */; };
 		A248AABF2B0AD39D0073B679 /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248AABE2B0AD39D0073B679 /* ProgressSpinnerDelegate.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5491DDD52B20E9600002420C /* HomepageActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageActivityManager.swift; sourceTree = "<group>"; };
 		54BFC6BE2B16731A0095C6FC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A22B3CA42AF17A9A003AB877 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
 		A248AABE2B0AD39D0073B679 /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				A2A843652AF0A2800028DB72 /* HomepageView.swift */,
 				A22B3CA42AF17A9A003AB877 /* HomepageViewController.swift */,
+				5491DDD52B20E9600002420C /* HomepageActivityManager.swift */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				A2A843822AF0A7D00028DB72 /* LeaderboardView.swift in Sources */,
 				A248AB012B0AD9AF0073B679 /* LoginProgressIndicatorManager.swift in Sources */,
 				A248AAFD2B0AD7BC0073B679 /* Configs.swift in Sources */,
+				5491DDD62B20E9600002420C /* HomepageActivityManager.swift in Sources */,
 				A248AB0A2B0ADE6C0073B679 /* SignUpPhotoManager.swift in Sources */,
 				A2A8437A2AF0A7750028DB72 /* JourneyViewController.swift in Sources */,
 				A248AB052B0ADB4C0073B679 /* SignUpProgressIndicatorManager.swift in Sources */,
