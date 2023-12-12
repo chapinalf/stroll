@@ -127,7 +127,7 @@ class JourneyViewController: UIViewController {
     }
     
     func checkInFirebase() {
-        if(user.lastStrollDate == getYesterdaysDate()){
+        if(user.lastStrollDate == getYesterdaysDate() || user.strollsStreak == 0){
             database.collection("users").document((Auth.auth().currentUser?.email)!).updateData([
               "strollsStreak": FieldValue.increment(Int64(1)),
               "strollsTotal": FieldValue.increment(Int64(1)),
